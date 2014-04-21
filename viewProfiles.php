@@ -18,6 +18,7 @@ Search by username: <input type="text" name="username">
 <form method="post" action="viewProfiles.php">
 Search by a interest: <input type="text" name="interest">
 <input type="submit" value="Submit" name="interestsearchsubmit">
+<?php displaySkypeButton("mmilanovich");?>
 </form>
 <br>
 
