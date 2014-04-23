@@ -250,7 +250,6 @@ function getUsernameUsingEmail($email)
     return $resultArray[0];
 }
 
-//search based on interest return users as array
 /**
   * Function that returns user's username that matches the interests provided.
   *
@@ -274,7 +273,6 @@ function getUsernamesUsingInterests($interest)
     return $output;
 }
 
-//get paid or not
 /**
   * Function that returns whether the user is a paid subscriber.
   *
@@ -285,21 +283,36 @@ function getUsernamesUsingInterests($interest)
   *
   * @return "yes" or "no".
   */
+function checkPaidSubscription($uName)
+{
+    global $con;
+    
+    $result = mysqli_query($con,"select paid from userInfo where username='$uName'");
+    $resultArray = mysqli_fetch_array($result);
+    if($resultArray[0])
+        return TRUE;
+    else
+        return FALSE;
+}
 
-//set paid or not
 /**
   * Function used to set the status of a users subscription status
   *
   * updates the userInfo table setting the status of their paid subscription status to either true or false.
   *
   * @param String $uName is the username of the user whos subscription status will be returned.
+  * @param Boolean True if setting to true, false if setting to false.
   * 
   * @return returns true if the user is a paid subscriber and returns false if the user is not a paid subscriber.
   */
 function setSubscriptionStatus($uName, $status)
 {
-    if($status == "")
-    mysqli_query($con,"update userInfo set paid=TRUE where username='$uName'");
+        global $con;
+
+    if($status)
+        mysqli_query($con,"update userInfo set paid=TRUE where username='$uName'");
+    else
+        mysqli_query($con,"update userInfo set paid=FALSE where username='$uName'");
     
 }
 
@@ -322,5 +335,5 @@ function register($uName, $password, $email)
 
 }
 
-//login success, logout, main login, registration functions
+//TODO: login success, logout, main login,
 ?>
