@@ -40,12 +40,12 @@ function changePassword($uName, $password)
 function validatePassword($uName, $password)
 {
     global $con;
-    $result = mysqli_query($con,"select password from userInfo where username='Tom'");
+    $result = mysqli_query($con,"select password from userInfo where username='$uName'");
     $resultArray = mysqli_fetch_array($result);
     if($resultArray[0] == $password)
-        return "true";
+        return true;
     else
-        return "false";
+        return false;
 }
 
 /**
@@ -229,4 +229,98 @@ function getInterests($uName)
   * @param String $uName is the username of the user whos mentor will be added.
   * @param String $mentor is the new mentor that will be inputted into the database.
   */
+
+//search based on email and return username
+/**
+  * Function that returns user's userame based off of their email
+  *
+  * The function uses the email parameter to search the userInfo table of the 
+  * database and return the username associated with that email.
+  *
+  * @param String $email is the email of the user whos username will be returned.
+  *
+  * @return the username of the user in a string format.
+  */
+function getUsernameUsingEmail($email)
+{
+    global $con;
+    
+    $result = mysqli_query($con,"select username from userInfo WHERE email='$email'");
+    $resultArray = mysqli_fetch_array($result);
+    return $resultArray[0];
+}
+
+//search based on interest return users as array
+/**
+  * Function that returns user's username that matches the interests provided.
+  *
+  * The function uses the interest parameter to search the interest table of the 
+  * database and return the usernames associated with that interest.
+  *
+  * @param String $interest is the interest that will be matched to the returning users.
+  *
+  * @return the usernames of the users matching the interests in an Array format.
+  */
+function getUsernamesUsingInterests($interest)
+{
+    global $con;
+    
+    $result = mysqli_query($con,"select username from interests WHERE interest='$interest'");
+    $resultArray = mysqli_fetch_all($result);
+    $output = array();
+    for ($x=0; $x<=sizeof($resultArray)-1; $x++) {
+        array_push($output, $resultArray[$x][0]);
+    }
+    return $output;
+}
+
+//get paid or not
+/**
+  * Function that returns whether the user is a paid subscriber.
+  *
+  * The function uses the username parameter to search the userInfo table of the 
+  * database and return "yes" if the user is a paid subscriber, or it will return "no" if it is not.
+  *
+  * @param String $uName is the username of the user whos subscription status will be returned.
+  *
+  * @return "yes" or "no".
+  */
+
+//set paid or not
+/**
+  * Function used to set the status of a users subscription status
+  *
+  * updates the userInfo table setting the status of their paid subscription status to either true or false.
+  *
+  * @param String $uName is the username of the user whos subscription status will be returned.
+  * 
+  * @return returns true if the user is a paid subscriber and returns false if the user is not a paid subscriber.
+  */
+function setSubscriptionStatus($uName, $status)
+{
+    if($status == "")
+    mysqli_query($con,"update userInfo set paid=TRUE where username='$uName'");
+    
+}
+
+
+/**
+  * Function used to input user into database with all the information
+  *
+  * takes the information from the registration page and inputs it into the database.
+  *
+  * @param String $uName is the username of the user whos information will be put in.
+  * @param String $password is the password of the user whos information will be put in.
+  * @param String $email is the email of the user whos information will be put in.
+  */
+function register($uName, $password, $email)
+{
+        global $con;
+
+        mysqli_query($con,"insert into userInfo (username, email, password, paid) values('$uName', '$email', '$password', FALSE);
+");
+
+}
+
+//login success, logout, main login, registration functions
 ?>
