@@ -1,90 +1,50 @@
-<?php 
-/*
- * Created on Apr 10, 2014
- *
- * This is the main page for a user to view and edit their profile information 
- * 
- * It interfaces with the database backend through the DatabaseFunction.php script file.
- * It includes methods for a user to change their password, email, interests, 
- * job description, and skype ID. It also allows for a user to delete a mentor or mentee
- * relationship.
- */
-// initialize the session and grant access to the database functions
-session_start(); 
-include 'DatabaseFunctions.php';
-?>
+<?php session_start(); ?>
 <html>
 <head>
+<title>Edit Profile</title>
+<link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
-<h1>Edit Profile</h1>
+<body style=" background-color: lightgray;">
+<h1 class="editprofile"><img class="small-logo" src="sjsu6.png" style="width: 88px; height: 88px; float:left; 
+background-color:gray; margin-left:30px;margin-bottom:10px; ">Mentor Web</h1>
 <br>
+<form >
+<h2 class="editprofile1"style="  blue; font-size: 20pt;font-style: italic;
+	 font-family: cursive;font-weight: bold; margin-left:550px;}"> Edit Profile</h2>
+<div class="editprofile">
 
-<!-- Form for changing a users password, makes a self reference call for security -->
-<form method="post" action="editProfile.php">
-Old Password: <input type="password" name="oldpassword">
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['passwordsubmit'])) {
-		//if (!validatePassword($_SESSION['myusername'], $_POST['oldpassword'])) {
-    		echo '<p>Incorrect Password, please try again</p>';
-    		$correctPassword = false;
-    	//}
-    	//else 
-    		//echo '<br>';
-	
-} else {
-	echo '<br>';
-}
-echo 'New Password: <input type="password" name="newpassword"><br>';
-echo 'Repeat New Password: <input type="password" name="repeatnewpassword">';
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['passwordsubmit']) && $correctPassword) {
-	if ($_POST['newpassword'] == $_POST['repeatnewpassword']) {	
-    	echo '<p>Password submitted</p>';
-        //changePassword($_SESSION['myusername'], $_POST['newpassword']);
-   	} else {
-        echo '<p>New passwords do not match, please try again</p>';
-    }
-    echo '<br>';
-    
-}
-echo '<input type="submit" value="Submit" name="passwordsubmit">';
-?>
+<form class="editprofile" method="post" action="changePassword.php">
+<p class="editprofile">
+Old Password:<br> <input class="editprofile1" type="password" name="oldpassword" ><br><br>
+New Password: <br><input class="editprofile1" type="password" name="newpassword" ><br><br>
+Re-enter Password:<br> <input class="editprofile1"  type="password" name="repeatnewpassword">
+<input class="editprofile" type="submit" value="Submit" name="passwordsubmit" ></p><br>
 </form>
 
 <?php
-// Check if the user is paid, if not, add a link to become a paid member, otherwise, 
-// show button to change a user's credit card information.
 $paid = false; //remove this line, change next to if ($_SESSION['paid'] == false)
 if (!$paid) {
-    echo '<p>Would you like to become a premium member and remove all limits on mentors and mentees?</p>';
-    echo '<form action="subscribe.php"><input type="submit" value="Subscribe"></form>'; 
+    echo '<p class ="editprofile">Would you like to become a premium member<br> and remove all limits on mentors and mentees?';
+    echo '<form action="subscribe.php"><input class="editprofile" type="submit" value="Subscribe"style="margin-left:402px;" ></p></form>'; 
 } else { // change to else if ($_SESSION['paid'] == true)
     $creditCardLastFourDigits = 1111; //change to grab credit card info
-    echo '<p>Credit Card: ************'.$creditCardLastFourDigits.'</p>';
-    echo '<input type="button" onlick="changeCreditCard.php" value="Change">';
+    echo '<p class ="editprofile">Credit Card: ************'.$creditCardLastFourDigits.'</p>';
+    echo '<input class ="editprofile" type="button" onlick="changeCreditCard.php" value="Change">';
 }
 ?>
-<!-- Form to change a user's email-->
-<p>Email: 
+
+<p class="editprofile">Email: 
 <?php 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['emailsubmit'])) {
-	//changeEmail($_SESSION['username'], $_POST['email']);  
-	//$email = $_POST['email']; 
-}
-// else {
-//  $email = getEmail($_SESSION['username']);
-    $email = 'someemail@email.com';
-    echo $email;
-// }
+$email = 'someemail@email.com';
+echo $email;
 ?>
 </p>
-<form method="post" action="editProfile.php">
-New email: <input type="text" name="email">
-<input type="submit" value="Submit" name="emailsubmit">
+<form class="editprofile" method="post" action="changeEmail.php">
+New email: <br><input class="editprofile1" type="text" name="email">
+<input class="editprofile" type="submit" value="Submit" name="submit">
 </form>
 
-<!-- Form to change a user's interests -->
-<p>Interests:</p><br>
+<p class="editprofile">Interests:</p><br>
 <?php
 //some php code to get current interests into an array
 //for each intetersts in array
@@ -92,57 +52,54 @@ New email: <input type="text" name="email">
 //    echo '<input type="button" onclick="deleteInterest($interest)" value="Delete" />
 ?>
 
-<!-- Form to change a user's job description -->
-<p>Job Description:
+<p class="editprofile">Job Description:
 <?php
 $jobDescription = 'myjob';
 // set job description
 echo $jobDescription;
 ?>
 </p>
-<form method="post" action="changeJobDescription.php">
-New Job Description: <input type="text" name="jobdescription">
-<input type="submit" value="Submit" name="submit">
+<form class="editprofile" method="post" action="changeJobDescription.php">
+New Job Description:<br> <input class="editprofile1" type="text" name="jobdescription">
+<input class="editprofile" type="submit" value="Submit" name="submit">
 </form>
 
-<!-- Form to change a user's skype ID -->
-<p>SkypeID: 
+<p class="editprofile">SkypeID: 
 <?php
 $skypeid = 'myskypeid';
 // set $skypeid to get skypeID
 echo $skypeid;
 ?>
 </p>
-<form method="post" action="changeSkypeID.php">
-New Skype ID: <input type="text" name="newskypeid">
-<input type="submit" value="Submit" name="submit">
+<form class="editprofile" method="post" action="changeSkypeID.php">
+New Skype ID: <br><input class="editprofile1" type="text" name="newskypeid">
+<input class="editprofile" type="submit" value="Submit" name="submit">
 </form>
 
-<p>My Mentees:</p>
+<p class="editprofile">My Mentees:</p>
 <!-- 
 list mentees with buttons to remove from both parties and inform 
-<input type="button" onclick="deleteMentorOrMentee.php" value="Delete">
+<input class="editprofile" type="button" onclick="deleteMentorOrMentee.php" value="Delete">
 -->
-<p>My Mentors:</p>
+<p class="editprofile">My Mentors:</p>
 <!-- 
 list mentees with buttons to remove from both parties and inform 
-use button after each <input type="button" onclick="deleteMentorOrMentee.php" value="Delete">
+use button after each <input class="editprofile" type="button" onclick="deleteMentorOrMentee.php" value="Delete">
 -->
 
 <?php
-
-/*
- * Deletes an interest that is stored in a user profile
- *
- * @param array of strings $interest is an array that holds all of a user's interests as
- *		strings
- * 
- * @return void
- */
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['passwordsubmit'])){
+    	echo 'password submitted';
+    }
+}
 function deleteInterest($interest) {
     echo 'interest deleted!';
-    header('Refresh: 3; URL=http://localhost/editProfile.php');
+    header('Refresh: 3; URL=http://localhost/index.php');
 }
 ?>
+</div><br>
+</form>
+<br><br>
 </body>
 </html>
