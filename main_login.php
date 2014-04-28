@@ -1,3 +1,4 @@
+
 <?php
 /*
  * Created on Apr 7, 2014
@@ -7,7 +8,7 @@
  *
  */
 
-require "config.php";
+//require "config.php";
 $tbl_name="members"; // Table name 
 
 //check to see if the user is connected
@@ -45,38 +46,72 @@ echo "Wrong Username or Password";
 }
 }
 ?>
+<html>
+<head>
+<title>Log In</title>
+<link rel="stylesheet" type="text/css" href="style.css">
 
-<table width="300" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#CCCCCC">
+</head>
+<body>
+
+<body style=" background-color: lightgray;">
+<form class"mainlogin">
+<h1 class="mainlogin" ><img class="small-logo" src="sjsu6.png" style="width: 88px; height: 88px; float:left; 
+background-color:gray; margin-left:30px;margin-bottom:10px; ">Mentor Web</h1>
+
+<figure class="logo">
+<img  class="logo" src="sjsu7.png" style="width: 481px; height: 357px; margin-left:70px; ">
+</figure>
+
+<div class = "right">
+<table class= "mainlogin" >
+<caption class= "header" > Member Login </caption>
 <tr>
-<form name="form1" method="post" action="main_login.php">
+<form  class= "login-right" name="form1" method="post" action="main_login.php">
 <td>
-	<table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
+	<table>
+	
+	<tr></tr>
+	<tr></tr>
 	<tr>
-	<td colspan="3"><strong>Member Login </strong></td>
-	</tr>
-	<tr>
-	<td width="78">Username</td>
+	<td  class= "body" >Username</td>
 	<td width="6">:</td>
-	<td width="294"><input name="myusername" type="text" id="myusername"></td>
+	<td width="160px"><input class="textbox" name="myusername" type="text" id="myusername"></td>
 	</tr>
 
 	<tr>
-	<td>Password</td>
+	<td class = "body" >Password</td>
 	<td>:</td>
-	<td><input name="mypassword" type="text" id="mypassword"></td>
+	<td width="160px"><input class="textbox" name="mypassword" type="text" id="mypassword"></td>
 	</tr>
+	
 
 	<tr>
 	<td>&nbsp;</td>
 	<td>&nbsp;</td>	
-	<td><input type="submit" name="Submit" value="Login"></td>	
+	<td class="body1"><input class="b" type="submit" name="Submit" value="Login" style="margin-right:10px;"></td>	
 	</tr>
 	
 	</table>
+	<a  class= "mainlogin" href="registration.php" ><span style ="color:blue;"> click here to register</span></a>
 </td>
 </form>
 </tr>
+
 </table>
-<div align="center">
-<a href="registration.php" >click here to register</a>
+
+
+
 </div>
+<div class ="samll-logo">
+<aside class= "small-logo">
+<div><img class=small-logo src="sjsu8.jpg" ></div>
+<div><img class=small-logo src="sjsu4.jpg" ></div>
+<div><img class=small-logo src="engineering.jpg" ></div>
+</aside>
+</div>
+
+</form>
+
+</body>
+</html>
