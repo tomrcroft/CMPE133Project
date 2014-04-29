@@ -326,14 +326,81 @@ function setSubscriptionStatus($uName, $status)
   * @param String $password is the password of the user whos information will be put in.
   * @param String $email is the email of the user whos information will be put in.
   */
-function register($uName, $password, $email)
+function register($uName, $password, $confirmPassword, $email)
 {
         global $con;
+        
+    $UsernameMatch = mysqli_query($con,"select * from userInfo WHERE username='$uName'");
+    $UsernameMatchArray = mysqli_fetch_array($UsernameMatch);
+    if($UsernameMatchArray[0] != null)
+        die("username already in use");
+    
+    if(strcmp($password, $confirmPassword) != 0)
+        die("password do not match");
 
-        mysqli_query($con,"insert into userInfo (username, email, password, paid) values('$uName', '$email', '$password', FALSE);
-");
-
+    mysqli_query($con,"insert into userInfo (username, email, password, paid) values('$uName', '$email', '$password', FALSE);");
+    return TRUE;    
 }
 
-//TODO: login success, logout, main login,
+function doesUserExist($uName)
+{
+    global $con;
+    
+    $result = mysqli_query($con,"select * from userInfo WHERE username='$uName'");
+    $resultArray = mysqli_fetch_array($result);
+    if($resultArray[0] == null)
+        return FALSE;
+    else 
+        return TRUE;
+}
+
+function isMentor($uName)
+{
+    global $con;
+    
+    $result = mysqli_query($con,"select * from mentors WHERE mentorName='$uName'");
+    $resultArray = mysqli_fetch_array($result);
+    if($resultArray[0] == null)
+        return FALSE;
+    else 
+        return TRUE;
+}
+
+function deactivate($uName)
+{
+    
+}
+
+function addMentor($mentor, $mentee)
+{
+    global $con;
+    
+    mysqli_query($con,"insert into mentors values('$mentor', '$mentee');");
+}
+
+function addInterest($uName, $interest)
+{
+    global $con;
+    
+    mysqli_query($con,"insert into interests values('$uName', '$interest');");
+}
+
+function getMenteeByMentor($mentor)
+{
+    global $con;
+    
+    $result = mysqli_query($con,"select menteeName from mentors WHERE mentorName='$mentor'");
+    $resultArray = mysqli_fetch_array($result);
+    return $resultArray[0];
+}
+
+function getMentorByMentee($mentee)
+{
+    global $con;
+    
+    $result = mysqli_query($con,"select mentorName from mentors WHERE menteeName='$mentee'");
+    $resultArray = mysqli_fetch_array($result);
+    return $resultArray[0];
+}
+//TODO: location database functions.
 ?>
