@@ -1,4 +1,3 @@
-
 <?php
 /*
  * Created on Apr 7, 2014
@@ -8,7 +7,7 @@
  *
  */
 
-//require "config.php";
+require "config.php";
 $tbl_name="members"; // Table name 
 
 //check to see if the user is connected
