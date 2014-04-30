@@ -6,7 +6,7 @@
  * The user is registered if no error is present from the form.
  *
  */
-require "config.php";
+//require "config.php";
 $tbl_name="members"; // Table name 
 
 //username, password, checked password, and email sent from form
@@ -59,36 +59,55 @@ $add_member = mysql_query($insert);
 echo "Successful! <a href='main_login.php'> Click Here </a> to log In."; 
  }
 ?>
+<html>
+<head>
+<title>Registration</title>
 
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body  style=" background-color: lightgray;">
+
+<h1 class="mainlogin" ><img class="small-logo" src="sjsu6.png" style="width: 88px; height: 88px; float:left; 
+background-color:gray; margin-left:30px;margin-bottom:10px; ">Mentor Web</h1>
+<div class="register">
  <form action="registration.php" method="post">
  
- <table border="0">
+ <table class="register" border="0">
+<caption class= "header"  > Registration</caption>
+ <tr><td>Username:</td></tr>
+ <tr><td>
 
- <tr><td>Username:</td><td>
-
- <input type="text" name="myusername" maxlength="60">
-
- </td></tr>
-
- <tr><td>Password:</td><td>
-
- <input type="password" name="mypass" maxlength="10">
+ <input class= "textbox1" type="text" name="myusername" maxlength="60">
 
  </td></tr>
 
- <tr><td>Confirm Password:</td><td>
+ <tr><td>Password:</td></tr>
+<tr><td>
+ <input class="textbox1" type="password" name="mypass" maxlength="10">
 
- <input type="password" name="mypass2" maxlength="10">
+
+ </td></tr>
+
+ <tr><td>Confirm Password:</td></tr>
+ <tr><td>
+
+ <input class="textbox1" type="password" name="mypass2" maxlength="10">
 
  </td></tr>
  
- <tr><td>Email:</td><td>
+ <tr><td>Email:</td></tr>
+ <tr>
+ <td>
  
- <input type="email" name="myemail" maxlength="20">
+ <input class="textbox1" type="email" name="myemail" maxlength="20">
  
  </td></tr>
-
- <tr><th colspan=2><input type="submit" name="submit" 
-value="Register"></th></tr> </table>
+<tr><td width="410px" >
+<input class="button" type="submit" name="submit" value="Register" >
+</td></tr>
+ </table>
 
  </form>
+ </div>
+ </body>
+ </html>

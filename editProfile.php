@@ -2,18 +2,19 @@
 <html>
 <head>
 <title>Edit Profile</title>
-<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="style_editprofile.css">
 </head>
 <body style=" background-color: lightgray;">
 <h1 class="editprofile"><img class="small-logo" src="sjsu6.png" style="width: 88px; height: 88px; float:left; 
 background-color:gray; margin-left:30px;margin-bottom:10px; ">Mentor Web</h1>
 <br>
 <form >
-<h2 class="editprofile1"style="  blue; font-size: 20pt;font-style: italic;
-	 font-family: cursive;font-weight: bold; margin-left:550px;}"> Edit Profile</h2>
+
 <div class="editprofile">
 
 <form class="editprofile" method="post" action="changePassword.php">
+<h2 class="editprofile1"style=" font-size: 20pt;font-style: italic;
+	 font-family: cursive;font-weight: bold; margin-left:285px;}"> Edit Profile</h2>
 <p class="editprofile">
 Old Password:<br> <input class="editprofile1" type="password" name="oldpassword" ><br><br>
 New Password: <br><input class="editprofile1" type="password" name="newpassword" ><br><br>
