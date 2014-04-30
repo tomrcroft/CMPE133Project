@@ -32,7 +32,7 @@ h1.mainlogin {background:gray; text-align:center; font-size: 45pt; margin-top:10
 	 td.body{font-size: 13pt; font-weight: bold;font-family:cursive;  font-style: italic; text-align:left;}
 	 td.body1{text-align:right; }
 	 input.b{hegiht:35px; width: 80px; font-size: 14pt; font-weight:bold; font-family: cursive;font-style: italic;}
-	 caption.header{font-size:18pt; font-weight: bold;font-family:cursive;  font-style: italic; text-align:center;}
+	 caption.header{font-size:20pt; font-weight: bold;font-family:cursive;  font-style: italic; text-align:center;}
 div.register{font-size:13pt; font-weight:bold; border-style:outset; width:440px; height:500px; margin-left:415px; 
 	 background-color: silver;  margin-top:10px;}
 	 input.button{width: 100px; height: 30px; font-size: 12pt; font-weight: bold;font-family:cursive; 
