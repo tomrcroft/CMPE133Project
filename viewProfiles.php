@@ -3,28 +3,45 @@ include 'DatabaseFunctions.php';
 ?>
 <html>
 <head>
+<title> View Profile</title>
+
+<link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
-<h1>View Profiles</h1>
-<br>
+<body style=" background-color: lightgray;">
+<h1 class="mainlogin"><img class="small-logo" src="sjsu6.png" style="width: 88px; height: 88px; float:left; 
+background-color:gray; margin-left:30px;margin-bottom:10px; ">Mentor Web</h1>
+<div class="viewprofile">
+<h2 class="editprofile1"style=" font-size: 20pt;font-style: italic;
+	 font-family: cursive;font-weight: bold; margin-left:200px;}"> View Profile</h2>
 <!-- These forms allow a user to search for another user based on their username,
 email, or interests -->
-<form method="post" action="viewProfiles.php">
-Search by email: <input type="text" name="email">
-<input type="submit" value="Submit" name="emailsearchsubmit">
+<form class="viewprofile" method="post" action="viewProfiles.php">
+<br>
+Search by Email: <br>
+<p class="viewprofile"> <input  class="textbox2" type="text" name="email">
+<input class="button1" type="submit" value="Submit" name="emailsearchsubmit">
+</p>
 </form>
 <br>
-<form method="post" action="viewProfiles.php">
-Search by username: <input type="text" name="username">
-<input type="submit" value="Submit" name="usernamesearchsubmit">
+<form class="viewprofile" method="post" action="viewProfiles.php">
+Search by User Name: <br>
+<p class="viewprofile">
+<input class="textbox2" type="text" name="username">
+<input class="button1" type="submit" value="Submit" name="usernamesearchsubmit">
+</p>
 </form>
 <br>
-<form method="post" action="viewProfiles.php">
-Search by a interest: <input type="text" name="interest">
-<input type="submit" value="Submit" name="interestsearchsubmit">
+<form class="viewprofile" method="post" action="viewProfiles.php">
+Search by an Interest:<br>
+<p class="viewprofile">
+ <input class="textbox2" type="text" name="interest">
+<input class="button1" type="submit" value="Submit" name="interestsearchsubmit"></p>
 </form>
 <br>
+</div>
+</body>
 
+</html>
 
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -130,6 +147,3 @@ echo '</script>';
 echo '</div>';
 }
 ?>
-
-</body>
-</head>
