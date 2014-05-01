@@ -79,11 +79,13 @@ New Skype ID: <br><input class="editprofile1" type="text" name="newskypeid">
 
 <p class="editprofile">My Mentees:</p>
 <!-- 
+getMenteeByMentor($mentor)x
 list mentees with buttons to remove from both parties and inform 
 <input class="editprofile" type="button" onclick="deleteMentorOrMentee.php" value="Delete">
 -->
 <p class="editprofile">My Mentors:</p>
 <!-- 
+getMentorByMentee($mentee)
 list mentees with buttons to remove from both parties and inform 
 use button after each <input class="editprofile" type="button" onclick="deleteMentorOrMentee.php" value="Delete">
 -->
@@ -96,7 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 function deleteInterest($interest) {
     echo 'interest deleted!';
-    header('Refresh: 3; URL=http://localhost/index.php');
+    header('Refresh: 3; URL=http://localhost/editProfile.php');
 }
 ?>
 </div><br>

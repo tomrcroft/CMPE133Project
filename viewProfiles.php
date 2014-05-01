@@ -80,10 +80,14 @@ function displayUserProfileByUsername($username) {
  * @return void
  */
 function displayUserProfileByEmail($email) {
-	//if user with $email exists
-	//	 displayUserProfile($user)
-	//else
+	try {
+		$founduser = getUsernameUsingEmail($email);
+		echo $founduser;
+		displayUserProfile($founduser);
+	} 
+	catch (Exception $ex) {
 		echo 'User not found, please enter a valid email';
+	}	
 }
 
 /*
