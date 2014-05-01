@@ -6,7 +6,7 @@
  * 
  */
 session_start();
-require "config.php";
+include "DatabaseFunctions.php";
 session_destroy();
 echo "You have successfully logged out.";
 ?>
