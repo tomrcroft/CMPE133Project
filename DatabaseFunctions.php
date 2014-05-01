@@ -368,7 +368,13 @@ function isMentor($uName)
 
 function deactivate($uName)
 {
+    global $con;
     
+    mysqli_query($con,"delete from userInfo where username='$uName'");
+        
+    mysqli_query($con,"delete from interests where username='$uName'");
+    
+    mysqli_query($con,"delete from mentors where mentorName='$uName'");
 }
 
 function addMentor($mentor, $mentee)
