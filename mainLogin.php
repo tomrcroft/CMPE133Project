@@ -48,7 +48,7 @@ background-color:gray; margin-left:30px;margin-bottom:10px; ">Mentor Web</h1>
 <table class= "mainlogin" >
 <caption class= "header" > Member Login </caption>
 <tr>
-<form  class= "login-right" name="form1" method="post" action="main_login.php">
+<form  class= "login-right" name="form1" method="post" action="mainLogin.php">
 <td>
 	<table>
 	
@@ -70,7 +70,7 @@ background-color:gray; margin-left:30px;margin-bottom:10px; ">Mentor Web</h1>
 	<tr>
 	<td>&nbsp;</td>
 	<td>&nbsp;</td>	
-	<td class="body1"><input class="b" type="submit" name="Submit" value="Login" style="margin-right:10px;"></td>	
+	<td class="body1"><input class="b" type="submit" name="submit" value="Login" style="margin-right:10px;"></td>	
 	</tr>
 	
 	</table>
