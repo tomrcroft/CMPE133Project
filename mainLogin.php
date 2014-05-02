@@ -16,11 +16,11 @@ header("location:mainWebpage.php");
 
 if(isset($_POST['submit'])) 
 { 
-if(validatePassword($_POST['myusername'],$_POST['mypassword'])== true){
-
+if(validatePassword($_POST['myusername'],$_POST['mypassword'])== 1){
+$myusername1=$_POST['myusername'];
 // Register $myusername, $mypassword and redirect to file "login_success.php"
-$_SESSION['username']= $_POST['myusername'];
-header("location:login_success.php");
+session_register("myusername1");
+header("location:mainWebpage.php");
 }
 else {
 echo "Wrong Username or Password";
@@ -48,7 +48,7 @@ background-color:gray; margin-left:30px;margin-bottom:10px; ">Mentor Web</h1>
 <table class= "mainlogin" >
 <caption class= "header" > Member Login </caption>
 <tr>
-<form  class= "login-right" name="form1" method="post" action="main_login.php">
+<form  class= "login-right" name="form1" method="post" action="mainLogin.php">
 <td>
 	<table>
 	
@@ -70,7 +70,7 @@ background-color:gray; margin-left:30px;margin-bottom:10px; ">Mentor Web</h1>
 	<tr>
 	<td>&nbsp;</td>
 	<td>&nbsp;</td>	
-	<td class="body1"><input class="b" type="submit" name="Submit" value="Login" style="margin-right:10px;"></td>	
+	<td class="body1"><input class="b" type="submit" name="submit" value="Login" style="margin-right:10px;"></td>	
 	</tr>
 	
 	</table>
