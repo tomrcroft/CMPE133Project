@@ -25,10 +25,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$requestPost = true;
     if (isset($_POST['pwordsubmit'])){
     	$passwordsubmit = true;
-    	if (validatePassword($_SESSION['username'], $_POST['oldpassword'])) {    	
+    	if (validatePassword($_SESSION['username'], $_POST['oldpassword'])) { 	
     		if (strcmp($_POST['newpassword'], $_POST['repeatnewpassword']) == 0) {
     			changePassword($_SESSION['username'], $_POST['newpassword']);
-    			$passwordChanged == true;
+    			$passwordChanged = true;
     		} else {
     			$passwordsdontmatch = true;
     		}	
