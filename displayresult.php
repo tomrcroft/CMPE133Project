@@ -44,7 +44,7 @@ include 'DatabaseFunctions.php';
 				echo ' ' . $interest . ', ';
 			}
 						
-			echo '<b></td><td width="15%">' . $skypeID . "</td></tr>";				}
+			echo '<b></td><td width="15%">' . $skypeID . "</td></tr>";				
 		}
 		
 		echo '</table>';
