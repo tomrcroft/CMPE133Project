@@ -1,7 +1,32 @@
-<?php session_start(); 
-$_SESSION['username'] = paidUser;
+<?php 
+
+session_start(); 
+$_SESSION['username'] = unpaidUser;
 include 'DatabaseFunctions.php';
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['passwordsubmit'])){
+    	echo 'password submitted';
+    }
+    else if (isset($_POST['emailsubmit'])) {
+    // set new email in database
+    changeEmail($_SESSION['myusername'], $_POST['email']);
+    }
+    else if (isset($_POST['jobdescriptionsubmit'])){
+    	changeJobDescription($_SESSION['username'], $_POST['jobdescription']);
+    }
+    else if (isset($_POST['skypesubmit'])){
+    	changeSkypeID($_SESSION['username'], $_POST['newskypeid']);
+    }
+    else if (isset($_POST['interestsubmit'])){
+    	addInterest($_SESSION['username'], $_POST['interest']);
+    }
+}
+function deleteInterest($interest) {
+    echo 'interest deleted!';
+    header('Refresh: 3; URL=http://localhost/editProfile.php');
+}
 ?>
+
 <html>
 <head>
 <title>Edit Profile</title>
@@ -15,7 +40,7 @@ background-color:gray; margin-left:30px;margin-bottom:10px; ">Mentor Web</h1>
 
 <div class="editprofile">
 
-<form class="editprofile" method="post" action="changePassword.php">
+<form class="editprofile" method="post" action="editProfile.php">
 <h2 class="editprofile1"style=" font-size: 20pt;font-style: italic;
 	 font-family: cursive;font-weight: bold; margin-left:285px;}"> Edit Profile</h2>
 <p class="editprofile">
@@ -45,18 +70,32 @@ $email = getEmail($_SESSION['username']);
 echo $email;
 ?>
 </p>
-<form class="editprofile" method="post" action="changeEmail.php">
+<form class="editprofile" method="post" action="editProfile.php">
 New email: <br><input class="editprofile1" type="text" name="email">
 <input class="editprofile" type="submit" value="Submit" name="emailsubmit">
 </form>
 
 <p class="editprofile">Interests:</p><br>
 <?php
-//some php code to get current interests into an array
-//for each intetersts in array
-//    echo 'interestString';
-//    echo '<input type="button" onclick="deleteInterest($interest)" value="Delete" />
+try {
+	$interestsArray = getInterests($_SESSION['username']);
+	echo  count($interestArray);
+	if (0 < count($interestArray)) {
+		foreach ($interestsArray as $interest) {
+			echo $interest;
+			echo '<input type="button" onclick="deleteInterest($interest)" value="Delete" />' + '<br>';
+		}
+	}
+}
+catch (Exception $ex) {
+}  
 ?>
+<p class="editprofile">Add a new interest:</p>
+<form class="editprofile" method="post" action="editProfile.php">
+New Interest:<br> <input class="editprofile1" type="text" name="interest">
+<input class="editprofile" type="submit" value="Submit" name="interestsubmit">
+</form>
+
 
 <p class="editprofile">Job Description:
 <?php
@@ -66,9 +105,9 @@ $jobDescription = getjobDescription($_SESSION['username']);
 echo $jobDescription;
 ?>
 </p>
-<form class="editprofile" method="post" action="changeJobDescription.php">
+<form class="editprofile" method="post" action="editProfile.php">
 New Job Description:<br> <input class="editprofile1" type="text" name="jobdescription">
-<input class="editprofile" type="submit" value="Submit" name="submit">
+<input class="editprofile" type="submit" value="Submit" name="jobdescriptionsubmit">
 </form>
 
 <p class="editprofile">SkypeID: 
@@ -78,9 +117,9 @@ $skypeid = getskypeID($_SESSION['username']);
 echo $skypeid;
 ?>
 </p>
-<form class="editprofile" method="post" action="changeSkypeID.php">
+<form class="editprofile" method="post" action="editProfile.php">
 New Skype ID: <br><input class="editprofile1" type="text" name="newskypeid">
-<input class="editprofile" type="submit" value="Submit" name="submit">
+<input class="editprofile" type="submit" value="Submit" name="skypesubmit">
 </form>
 
 <p class="editprofile">My Mentees:</p>
@@ -96,22 +135,6 @@ list mentees with buttons to remove from both parties and inform
 use button after each <input class="editprofile" type="button" onclick="deleteMentorOrMentee.php" value="Delete">
 -->
 
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST['passwordsubmit'])){
-    	echo 'password submitted';
-    }
-    if(isset($_POST['emailsubmit'])) {
-    // set new email in database
-    changeEmail($_SESSION['myusername'], $_POST['email']);
-    echo '<p>Email set to ' . $_POST['email'] . '</p>';
-}
-}
-function deleteInterest($interest) {
-    echo 'interest deleted!';
-    header('Refresh: 3; URL=http://localhost/editProfile.php');
-}
-?>
 </div><br>
 </form>
 <br><br>
