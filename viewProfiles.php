@@ -65,9 +65,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
  * @return void
  */
 function displayUserProfileByUsername($username) {
-	//if username exists
-	//	displayUserProfile($username);
-	//else
+	if (doesUserExist($username))
+		displayUserProfile($username);
+	else
 		echo 'User not found, please enter a valid username';
 }
 
@@ -99,9 +99,13 @@ function displayUserProfileByEmail($email) {
  * @return void
  */
 function displayUserProfilesByInterest($interest) {
-	// if database returns items, display in a list
-	// else 
-	echo 'No users found with an interest in '.$interest.', please try another interest';
+	$userArray = getUsernamesUsingInterests($interest);
+	if (count($userArray > 0)) {
+		foreach ($userArray as $user)
+			echo '<br> Username:<button class="button1" type="button" onclick=displayUserProfile('.$user.')>'.$user.'</button>';
+	}
+	else 
+		echo 'No users found with an interest in '.$interest.', please try another interest';
 }
 
 /*
@@ -113,18 +117,17 @@ function displayUserProfilesByInterest($interest) {
  * @return void
  */
 function displayUserProfile($user) {
-	echo $user;
+	echo '<p>Username: '.$user.'</p>';
 	echo '<br>';
-	echo '<p>'.getEmail($user).'</p>';
-	echo '<br>';
+	echo '<p>Email Address: '.getEmail($user).'</p>';
 	displaySkypeButton(getskypeID($user));
-	echo '<br>';
+	echo '<p>Interests:</p>';
 	$interestsArray = getInterests($user);
 	for ($i = 0; $i < count($interestsArray); $i++) {
 		echo '<p>'.$interestsArray[$i].'</p>';
 		echo '<br>';
 	}
-	echo '<p>'.getjobDescription($user).'</p>';
+	echo '<p>Job Description: '.getjobDescription($user).'</p>';
 }
 
 /*

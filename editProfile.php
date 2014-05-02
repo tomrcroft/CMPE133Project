@@ -1,7 +1,12 @@
 <?php 
-
 session_start(); 
-$_SESSION['username'] = unpaidUser;
+/*
+if (!isset($_SESSION['username'])) {
+	header('location: mainLogin.php');
+	die();
+}*/
+	
+$_SESSION['username'] = testUser;
 include 'DatabaseFunctions.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['passwordsubmit'])){
