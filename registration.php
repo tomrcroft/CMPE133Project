@@ -13,7 +13,7 @@ include "DatabaseFunctions.php";
  	
  if(register($_POST['myusername'], $_POST['mypass'] ,$_POST['mypass2'] , $_POST['myemail'])==1)
  {
- 	echo "Successful! <a href='main_login.php'> Click Here </a> to log In.";
+ 	echo "Successful! <a href='mainLogin.php'> Click Here </a> to log In.";
  }
  }
 ?>
