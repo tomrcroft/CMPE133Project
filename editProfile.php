@@ -84,10 +84,10 @@ New email: <br><input class="editprofile1" type="text" name="email">
 <p class="editprofile">Interests:</p><br>
 <?php
 try {
-	$interestsArray = getInterests($_SESSION['username']);
-	echo  count($interestArray);
+	$interestsArray = getInterests($unpaidUser);
+	echo count($interestArray);
 	if (0 < count($interestArray)) {
-		foreach ($interestsArray as $interest) {
+		for ($i = 0; i < sizeOf($interestArray); $i++) {
 			echo $interest;
 			echo '<input type="button" onclick="deleteInterest($interest)" value="Delete" />' + '<br>';
 		}
