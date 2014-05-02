@@ -63,7 +63,7 @@ background-color:gray; margin-left:30px;margin-bottom:10px; ">Mentor Web</h1>
 	<tr>
 	<td class = "body" >Password</td>
 	<td>:</td>
-	<td width="160px"><input class="textbox" name="mypassword" type="password" id="mypassword"></td>
+	<td width="160px"><input class="textbox" name="mypassword" type="test" id="mypassword"></td>
 	</tr>
 	
 
