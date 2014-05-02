@@ -7,25 +7,7 @@
  *
  */
 
-include "DatabaseFunctions.php";
 
-//check to see if the user is connected
-if(isset($_SESSION['username'])){ 
-header("location:mainWebpage.php");
-} 
-
-if(isset($_POST['submit'])) 
-{ 
-if(validatePassword($_POST['myusername'],$_POST['mypassword'])== 1){
-$myusername1=$_POST['myusername'];
-// Register $myusername, $mypassword and redirect to file "login_success.php"
-session_register("$myusername1");
-header("location:mainWebpage.php");
-}
-else {
-echo "Wrong Username or Password";
-}
-}
 ?>
 <html>
 <head>
@@ -48,7 +30,7 @@ background-color:gray; margin-left:30px;margin-bottom:10px; ">Mentor Web</h1>
 <table class= "mainlogin" >
 <caption class= "header" > Member Login </caption>
 <tr>
-<form  class= "login-right" name="form1" action="mainLogin.php" method="post" >
+<form  class= "login-right" name="form1" action="loginFile.php" method="post" >
 <td>
 	<table>
 	
