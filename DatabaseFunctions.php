@@ -181,8 +181,15 @@ function getInterests($uName)
 {
     global $con;
     
-    $result = mysqli_query($con,"select * from interests WHERE username='$uName'");
-    $resultArray = mysqli_fetch_array($result);
+    
+    $result = mysqli_query($con,"select interest from interests where username='$uName';");
+    $resultArray = array(); // make a new array to hold all your data
+    $index = 0;
+    while($row = $result->fetch_assoc()) 
+    {
+         $resultArray[$index] = $row['interest'];
+         $index++;
+    }
     return $resultArray;
 }
 
@@ -388,7 +395,7 @@ function addInterest($uName, $interest)
 {
     global $con;
     
-    mysqli_query($con,"insert into interests values('$uName', '$interest');");
+    mysqli_query($con,"insert into interests (username, interest) values('$uName', '$interest');");
 }
 
 function getMenteeByMentor($mentor)
