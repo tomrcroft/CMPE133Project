@@ -19,7 +19,7 @@ if(isset($_POST['submit']))
 if(validatePassword($_POST['myusername'],$_POST['mypassword'])== true){
 
 // Register $myusername, $mypassword and redirect to file "login_success.php"
-$_SESSION['username']= $myusername;
+$_SESSION['username']= $_POST['myusername'];
 header("location:login_success.php");
 }
 else {
@@ -63,7 +63,7 @@ background-color:gray; margin-left:30px;margin-bottom:10px; ">Mentor Web</h1>
 	<tr>
 	<td class = "body" >Password</td>
 	<td>:</td>
-	<td width="160px"><input class="textbox" name="mypassword" type="text" id="mypassword"></td>
+	<td width="160px"><input class="textbox" name="mypassword" type="password" id="mypassword"></td>
 	</tr>
 	
 
