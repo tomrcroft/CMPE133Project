@@ -100,18 +100,15 @@ New email: <br><input class="editprofile1" type="text" name="email">
 
 <p class="editprofile">Interests:</p><br>
 <?php
-try {
-	$interestsArray = getInterests($unpaidUser);
-	echo count($interestArray);
-	if (0 < count($interestArray)) {
-		for ($i = 0; i < sizeOf($interestArray); $i++) {
+	$interestsArray = getInterests('unpaidUser');
+	echo count($interestsArray);
+	/*
+	if (0 < count($interestsArray)) {
+		for ($i = 0; i < sizeOf($interestsArray); $i++) {
 			echo $interest;
 			echo '<input type="button" onclick="deleteInterest($interest)" value="Delete" />' + '<br>';
 		}
-	}
-}
-catch (Exception $ex) {
-}  
+	} */
 ?>
 <p class="editprofile">Add a new interest:</p>
 <form class="editprofile" method="post" action="editProfile.php">
