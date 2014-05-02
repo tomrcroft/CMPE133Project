@@ -20,7 +20,7 @@ if(validatePassword($_POST['myusername'],$_POST['mypassword'])== 1){
 
 // Register $myusername, $mypassword and redirect to file "login_success.php"
 $_SESSION['username']= $_POST['myusername'];
-header("location:login_success.php");
+header("location:mainWebpage.php");
 }
 else {
 echo "Wrong Username or Password";
