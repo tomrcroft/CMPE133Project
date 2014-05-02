@@ -13,7 +13,7 @@ if (!$_SESSION['loggedIn']) {
 </head>
 <body style=" background-color: lightgray;">
 <?php	
-$_SESSION['username'] = paidUser;
+$_SESSION['username'] = unpaidUser;
 $passwordChanged = false;
 $passwordsdontmatch = false;
 $oldpasswordbad = false;
@@ -25,8 +25,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$requestPost = true;
     if (isset($_POST['pwordsubmit'])){
     	$passwordsubmit = true;
-    	if (validatePassword($_SESSION['username'], $_POST['oldpassword'])) {
-    		if ($_POST['newpassword'] == $_POST['repeatnewpassword']) {
+    	if (validatePassword($_SESSION['username'], $_POST['oldpassword'])) {    	
+    		if (strcmp($_POST['newpassword'], $_POST['repeatnewpassword']) == 0) {
     			changePassword($_SESSION['username'], $_POST['newpassword']);
     			$passwordChanged == true;
     		} else {
@@ -81,19 +81,19 @@ if ($oldpasswordbad)
 	echo ' $oldpasswordbad = true';
 else if (!$oldpasswordbad)
 	echo ' $oldpasswordbad = false';
-if ($passwordscontmatch)
-	echo ' $passwordscontmatch = true';
-if (!$passwordscontmatch)
-	echo ' $passwordscontmatch = false';
+if ($passwordsdontmatch)
+	echo ' $passwordsdontmatch = true';
+if (!$passwordsdontmatch)
+	echo ' $passwordsdontmatch = false';
 echo '</p>';
 ?>
 <h2 class="editprofile1"style=" font-size: 20pt;font-style: italic;
 	 font-family: cursive;font-weight: bold; margin-left:285px;}"> Edit Profile</h2>
 <form> </form>
 <form class="editprofile" method="post" action="editProfile.php">
-Old Password: <br><input class="editprofile1" type="text" name="oldpassword" ><br><br>
-New Password: <br><input class="editprofile1" type="text" name="newpassword" ><br><br>
-Re-enter Password: <br><input class="editprofile1" type="text" name="repeatnewpassword">
+Old Password: <br><input class="editprofile1" type="password" name="oldpassword" ><br><br>
+New Password: <br><input class="editprofile1" type="password" name="newpassword" ><br><br>
+Re-enter Password: <br><input class="editprofile1" type="password" name="repeatnewpassword">
 <input class="editprofile" type="submit" value="Submit" name="pwordsubmit">
 </form>
 <?php
