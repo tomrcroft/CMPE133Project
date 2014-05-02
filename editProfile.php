@@ -1,4 +1,7 @@
-<?php session_start(); ?>
+<?php session_start(); 
+$_SESSION['username'] = paidUser;
+include 'DatabaseFunctions.php';
+?>
 <html>
 <head>
 <title>Edit Profile</title>
@@ -23,7 +26,8 @@ Re-enter Password:<br> <input class="editprofile1"  type="password" name="repeat
 </form>
 
 <?php
-$paid = false; //remove this line, change next to if ($_SESSION['paid'] == false)
+//$paid = false; //remove this line, change next to if ($_SESSION['paid'] == false)
+$paid = checkPaidSubscription($_SESSION['username']);
 if (!$paid) {
     echo '<p class ="editprofile">Would you like to become a premium member<br> and remove all limits on mentors and mentees?';
     echo '<form action="subscribe.php"><input class="editprofile" type="submit" value="Subscribe"style="margin-left:402px;" ></p></form>'; 
@@ -36,13 +40,14 @@ if (!$paid) {
 
 <p class="editprofile">Email: 
 <?php 
-$email = 'someemail@email.com';
+//$email = 'someemail@email.com';
+$email = getEmail($_SESSION['username']);
 echo $email;
 ?>
 </p>
 <form class="editprofile" method="post" action="changeEmail.php">
 New email: <br><input class="editprofile1" type="text" name="email">
-<input class="editprofile" type="submit" value="Submit" name="submit">
+<input class="editprofile" type="submit" value="Submit" name="emailsubmit">
 </form>
 
 <p class="editprofile">Interests:</p><br>
@@ -55,8 +60,9 @@ New email: <br><input class="editprofile1" type="text" name="email">
 
 <p class="editprofile">Job Description:
 <?php
-$jobDescription = 'myjob';
+//$jobDescription = 'myjob';
 // set job description
+$jobDescription = getjobDescription($_SESSION['username']);
 echo $jobDescription;
 ?>
 </p>
@@ -67,8 +73,8 @@ New Job Description:<br> <input class="editprofile1" type="text" name="jobdescri
 
 <p class="editprofile">SkypeID: 
 <?php
-$skypeid = 'myskypeid';
-// set $skypeid to get skypeID
+//$skypeid = 'myskypeid';
+$skypeid = getskypeID($_SESSION['username']);
 echo $skypeid;
 ?>
 </p>
@@ -79,7 +85,7 @@ New Skype ID: <br><input class="editprofile1" type="text" name="newskypeid">
 
 <p class="editprofile">My Mentees:</p>
 <!-- 
-getMenteeByMentor($mentor)x
+getMenteeByMentor($mentor)
 list mentees with buttons to remove from both parties and inform 
 <input class="editprofile" type="button" onclick="deleteMentorOrMentee.php" value="Delete">
 -->
@@ -95,6 +101,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['passwordsubmit'])){
     	echo 'password submitted';
     }
+    if(isset($_POST['emailsubmit'])) {
+    // set new email in database
+    changeEmail($_SESSION['myusername'], $_POST['email']);
+    echo '<p>Email set to ' . $_POST['email'] . '</p>';
+}
 }
 function deleteInterest($interest) {
     echo 'interest deleted!';
