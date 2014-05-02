@@ -2,6 +2,7 @@
 /**
  * This is the search page where users look for mentors or mentees 
  * by a job description and specific interests
+ * change 
  * @author Jordan Watts
  * @copyright 2014
  */
