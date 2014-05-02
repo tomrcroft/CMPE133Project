@@ -63,30 +63,6 @@ background-color:gray; margin-left:30px;margin-bottom:10px; ">Mentor Web</h1>
 <form >
 
 <div class="editprofile">
-<?php
-echo '<p>';
-if ($requestPost)
-	echo '$requestPost = true';
-if (!$requestPost)
-	echo '$requestPost = false';
-if ($passwordsubmit)
-	echo ' $passwordsubmit = true';
-if (!$passwordsubmit)
-	echo ' $passwordsubmit = false';
-if ($passwordChanged)
-	echo ' $passwordChanged = true';
-else if (!$passwordChanged)
-	echo ' $passwordChanged = false';
-if ($oldpasswordbad)
-	echo ' $oldpasswordbad = true';
-else if (!$oldpasswordbad)
-	echo ' $oldpasswordbad = false';
-if ($passwordsdontmatch)
-	echo ' $passwordsdontmatch = true';
-if (!$passwordsdontmatch)
-	echo ' $passwordsdontmatch = false';
-echo '</p>';
-?>
 <h2 class="editprofile1"style=" font-size: 20pt;font-style: italic;
 	 font-family: cursive;font-weight: bold; margin-left:285px;}"> Edit Profile</h2>
 <form> </form>
