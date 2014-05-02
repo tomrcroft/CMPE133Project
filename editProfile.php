@@ -1,17 +1,40 @@
 <?php 
 session_start(); 
 $_SESSION['loggedIn'] = true;
-
 if (!$_SESSION['loggedIn']) {
 	header('location: mainLogin.php');
 	die();
 }
-	
-$_SESSION['username'] = unpaidUser;
+?>
+<html>
+<head>
+<title>Edit Profile</title>
+<link rel="stylesheet" type="text/css" href="style_editprofile.css">
+</head>
+<body style=" background-color: lightgray;">
+<?php	
+$_SESSION['username'] = paidUser;
+$passwordChanged = false;
+$passwordsdontmatch = false;
+$oldpasswordbad = false;
+$passwordsubmit = false;
+$requestPost = false;
+
 include 'DatabaseFunctions.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST['passwordsubmit'])){
-    	echo 'password submitted';
+	$requestPost = true;
+    if (isset($_POST['pwordsubmit'])){
+    	$passwordsubmit = true;
+    	if (validatePassword($_SESSION['username'], $_POST['oldpassword'])) {
+    		if ($_POST['newpassword'] == $_POST['repeatnewpassword']) {
+    			changePassword($_SESSION['username'], $_POST['newpassword']);
+    			$passwordChanged == true;
+    		} else {
+    			$passwordsdontmatch = true;
+    		}	
+    	} else {
+    		$oldpasswordbad = true;
+    	}
     }
     else if (isset($_POST['emailsubmit'])) {
     // set new email in database
@@ -33,34 +56,52 @@ function deleteInterest($interest) {
 }
 ?>
 
-<html>
-<head>
-<title>Edit Profile</title>
-<link rel="stylesheet" type="text/css" href="style_editprofile.css">
-</head>
-<body style=" background-color: lightgray;">
+
 <h1 class="editprofile"><img class="small-logo" src="sjsu6.png" style="width: 88px; height: 88px; float:left; 
 background-color:gray; margin-left:30px;margin-bottom:10px; ">Mentor Web</h1>
 <br>
 <form >
 
 <div class="editprofile">
-
-<form class="editprofile" method="post" action="editProfile.php">
+<?php
+echo '<p>';
+if ($requestPost)
+	echo '$requestPost = true';
+if (!$requestPost)
+	echo '$requestPost = false';
+if ($passwordsubmit)
+	echo ' $passwordsubmit = true';
+if (!$passwordsubmit)
+	echo ' $passwordsubmit = false';
+if ($passwordChanged)
+	echo ' $passwordChanged = true';
+else if (!$passwordChanged)
+	echo ' $passwordChanged = false';
+if ($oldpasswordbad)
+	echo ' $oldpasswordbad = true';
+else if (!$oldpasswordbad)
+	echo ' $oldpasswordbad = false';
+if ($passwordscontmatch)
+	echo ' $passwordscontmatch = true';
+if (!$passwordscontmatch)
+	echo ' $passwordscontmatch = false';
+echo '</p>';
+?>
 <h2 class="editprofile1"style=" font-size: 20pt;font-style: italic;
 	 font-family: cursive;font-weight: bold; margin-left:285px;}"> Edit Profile</h2>
-<p class="editprofile">
-Old Password:<br> <input class="editprofile1" type="password" name="oldpassword" ><br><br>
-New Password: <br><input class="editprofile1" type="password" name="newpassword" ><br><br>
-Re-enter Password:<br> <input class="editprofile1"  type="password" name="repeatnewpassword">
-<input class="editprofile" type="submit" value="Submit" name="passwordsubmit" ></p><br>
+<form> </form>
+<form class="editprofile" method="post" action="editProfile.php">
+Old Password: <br><input class="editprofile1" type="text" name="oldpassword" ><br><br>
+New Password: <br><input class="editprofile1" type="text" name="newpassword" ><br><br>
+Re-enter Password: <br><input class="editprofile1" type="text" name="repeatnewpassword">
+<input class="editprofile" type="submit" value="Submit" name="pwordsubmit">
 </form>
-
 <?php
-//$paid = false; //remove this line, change next to if ($_SESSION['paid'] == false)
+
+
 $paid = checkPaidSubscription($_SESSION['username']);
 if (!$paid) {
-    echo '<p class ="editprofile">Would you like to become a premium member<br> and remove all limits on mentors and mentees?';
+    echo '<p class="editprofile">Would you like to become a premium member<br> and remove all limits on mentors and mentees?';
     echo '<form action="subscribe.php"><input class="editprofile" type="submit" value="Subscribe"style="margin-left:402px;" ></p></form>'; 
 } else { // change to else if ($_SESSION['paid'] == true)
     $creditCardLastFourDigits = 1111; //change to grab credit card info
