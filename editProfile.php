@@ -1,12 +1,13 @@
 <?php 
 session_start(); 
-/*
-if (!isset($_SESSION['username'])) {
+$_SESSION['loggedIn'] = true;
+
+if (!$_SESSION['loggedIn']) {
 	header('location: mainLogin.php');
 	die();
-}*/
+}
 	
-$_SESSION['username'] = testUser;
+$_SESSION['username'] = unpaidUser;
 include 'DatabaseFunctions.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['passwordsubmit'])){
