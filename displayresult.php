@@ -30,23 +30,22 @@ include 'DatabaseFunctions.php';
 	{
 		echo '<table width="700" class="altrowstable" id="alternatecolor"><tr><th>Name</th><th>Information</th><th>Contact</th></tr>';
 		
-		if ( $type == "Mentor" ){			
-			foreach ($usernames as $uName) 
-			{ 
-				$email = getEmail($uName);
-				$jobDescription = getjobDescription($uName);
-				$skypeID = getSkypeID($uName);
-				$allInterests = getInterests($uName);
-						
-				echo '<tr><td width="20%"><b>' . $uName . '</td><td width="65%"><b>Email: </b>' . $email . "<p><b> Job Description: </b>" . $jobDescription . "<p><b>Interests: </b>";
-						
-				foreach ($allInterests as $interest) {
-					echo ' ' . $interest . ', ';
-				}
-						
-				echo '<b></td><td width="15%">' . $skypeID . "</td></tr>";				}
+
+		foreach ($usernames as $uName) 
+		{ 
+			$email = getEmail($uName);
+			$jobDescription = getjobDescription($uName);
+			$skypeID = getSkypeID($uName);
+			$allInterests = getInterests($uName);
+					
+			echo '<tr><td width="20%"><b>' . $uName . '</td><td width="65%"><b>Email: </b>' . $email . "<p><b> Job Description: </b>" . $jobDescription . "<p><b>Interests: </b>";
+					
+			foreach ($allInterests as $interest) {
+				echo ' ' . $interest . ', ';
 			}
-		}	
+						
+			echo '<b></td><td width="15%">' . $skypeID . "</td></tr>";				}
+		}
 		
 		echo '</table>';
 	}
