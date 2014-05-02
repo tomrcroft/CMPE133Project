@@ -402,18 +402,30 @@ function getMenteeByMentor($mentor)
 {
     global $con;
     
-    $result = mysqli_query($con,"select menteeName from mentors WHERE mentorName='$mentor'");
-    $resultArray = mysqli_fetch_array($result);
-    return $resultArray[0];
+    $result = mysqli_query($con,"select menteeName from mentors where mentorName='$mentor';");
+    $resultArray = array(); 
+    $index = 0;
+    while($row = $result->fetch_assoc()) 
+    {
+         $resultArray[$index] = $row['menteeName'];
+         $index++;
+    }
+    return $resultArray;
 }
 
 function getMentorByMentee($mentee)
 {
     global $con;
     
-    $result = mysqli_query($con,"select mentorName from mentors WHERE menteeName='$mentee'");
-    $resultArray = mysqli_fetch_array($result);
-    return $resultArray[0];
+    $result = mysqli_query($con,"select mentorName from mentors where menteeName='$mentee';");
+    $resultArray = array(); 
+    $index = 0;
+    while($row = $result->fetch_assoc()) 
+    {
+         $resultArray[$index] = $row['mentorName'];
+         $index++;
+    }
+    return $resultArray;
 }
 //TODO: location database functions.
 ?>
