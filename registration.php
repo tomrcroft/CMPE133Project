@@ -10,7 +10,11 @@ include "DatabaseFunctions.php";
 
 //username, password, checked password, and email sent from form
  if (isset($_POST['submit'])) { 
-   register($_POST['myusername'], $_POST['mypass'] ,$_POST['mypass2'] , $_POST['myemail']);
+ 	
+ if(register($_POST['myusername'], $_POST['mypass'] ,$_POST['mypass2'] , $_POST['myemail'])==1)
+ {
+ 	echo "Successful! <a href='main_login.php'> Click Here </a> to log In.";
+ }
  }
 ?>
 <html>
