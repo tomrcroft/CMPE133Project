@@ -48,7 +48,7 @@ background-color:gray; margin-left:30px;margin-bottom:10px; ">Mentor Web</h1>
 <table class= "mainlogin" >
 <caption class= "header" > Member Login </caption>
 <tr>
-<form  class= "login-right" name="form1" method="post" action="mainLogin.php">
+<form  class= "login-right" name="form1" action="mainLogin.php" method="post" >
 <td>
 	<table>
 	
