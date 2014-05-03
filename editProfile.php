@@ -13,7 +13,7 @@ if (!$_SESSION['loggedIn']) {
 </head>
 <body style=" background-color: lightgray;">
 <?php	
-$_SESSION['username'] = unpaidUser;
+$_SESSION['username'] = mentor1;
 $passwordChanged = false;
 $passwordsdontmatch = false;
 $oldpasswordbad = false;
@@ -38,7 +38,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     else if (isset($_POST['emailsubmit'])) {
     // set new email in database
-    changeEmail($_SESSION['myusername'], $_POST['email']);
+    	changeEmail($_SESSION['username'], $_POST['email']);
+    	$emailchanged = true;
     }
     else if (isset($_POST['jobdescriptionsubmit'])){
     	changeJobDescription($_SESSION['username'], $_POST['jobdescription']);
@@ -98,17 +99,15 @@ New email: <br><input class="editprofile1" type="text" name="email">
 <input class="editprofile" type="submit" value="Submit" name="emailsubmit">
 </form>
 
-<p class="editprofile">Interests:</p><br>
+<p class="editprofile">Interests:</p>
 <?php
-	$interestsArray = getInterests('unpaidUser');
-	echo count($interestsArray);
-	/*
+	$interestsArray = getInterests($_SESSION['username']);
 	if (0 < count($interestsArray)) {
-		for ($i = 0; i < sizeOf($interestsArray); $i++) {
+		foreach ($interestsArray as $interest) {
 			echo $interest;
-			echo '<input type="button" onclick="deleteInterest($interest)" value="Delete" />' + '<br>';
+			echo '<input type="button" onclick="deleteInterest($interest)" value="Delete" />'.'<br>';
 		}
-	} */
+	} 
 ?>
 <p class="editprofile">Add a new interest:</p>
 <form class="editprofile" method="post" action="editProfile.php">
@@ -143,17 +142,21 @@ New Skype ID: <br><input class="editprofile1" type="text" name="newskypeid">
 </form>
 
 <p class="editprofile">My Mentees:</p>
-<!-- 
-getMenteeByMentor($mentor)
-list mentees with buttons to remove from both parties and inform 
-<input class="editprofile" type="button" onclick="deleteMentorOrMentee.php" value="Delete">
--->
+<?php
+$menteesArray = getMenteeByMentor($_SESSION['username']);
+foreach ($menteesArray as $mentee) {
+	echo $mentee;
+	echo '<input type="button" onclick="" value="Remove Relationship" />'.'<br>';
+}
+?>
 <p class="editprofile">My Mentors:</p>
-<!-- 
-getMentorByMentee($mentee)
-list mentees with buttons to remove from both parties and inform 
-use button after each <input class="editprofile" type="button" onclick="deleteMentorOrMentee.php" value="Delete">
--->
+<?php
+$mentorsArray = getMentorByMentee($_SESSION['username']);
+foreach ($mentorsArray as $mentor) {
+	echo $mentor;
+	echo '<input type="button" onclick="" value="Remove Relationship" />'.'<br>';
+}
+?>
 
 </div><br>
 </form>
