@@ -23,9 +23,9 @@ header("location:mainWebpage.php");
 if(isset($_POST['submit'])) 
 { 
 if(validatePassword($_POST['myusername'],$_POST['mypassword'])== 1){
-$myusername1=$_POST['myusername'];
+
 // Register $myusername, $mypassword and redirect to file "login_success.php"
-session_register("$myusername1");
+$_SESSION['username']=$_POST['myusername'];
 header("location:mainWebpage.php");
 }
 else {
