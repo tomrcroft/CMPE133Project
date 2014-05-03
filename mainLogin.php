@@ -18,7 +18,7 @@
 <body>
 
 <body style=" background-color: lightgray;">
-<form class"mainlogin">
+
 <h1 class="mainlogin" ><img class="small-logo" src="sjsu6.png" style="width: 88px; height: 88px; float:left; 
 background-color:gray; margin-left:30px;margin-bottom:10px; ">Mentor Web</h1>
 
@@ -74,7 +74,7 @@ background-color:gray; margin-left:30px;margin-bottom:10px; ">Mentor Web</h1>
 </aside>
 </div>
 
-</form>
+
 
 </body>
 </html>
