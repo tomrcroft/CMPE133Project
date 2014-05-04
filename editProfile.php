@@ -1,10 +1,8 @@
 <?php 
 session_start(); 
-$_SESSION['loggedIn'] = true;
-if (!$_SESSION['loggedIn']) {
-	header('location: mainLogin.php');
-	die();
-}
+$loggedIn = isset($_SESSION['username']);
+if (!$loggedIn)
+	header('location:mainLogin.php');
 ?>
 <html>
 <head>
@@ -13,12 +11,6 @@ if (!$_SESSION['loggedIn']) {
 </head>
 <body style=" background-color: lightgray;">
 <?php	
-$_SESSION['username'] = mentee1;
-$passwordChanged = false;
-$passwordsdontmatch = false;
-$oldpasswordbad = false;
-$passwordsubmit = false;
-$requestPost = false;
 
 include 'DatabaseFunctions.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -74,7 +66,8 @@ Re-enter Password: <br><input class="editprofile1" type="password" name="repeatn
 <input class="editprofile" type="submit" value="Submit" name="pwordsubmit">
 </form>
 <?php
-
+if ($loggedIn == false)
+	echo '$loggedIn = false';
 
 $paid = checkPaidSubscription($_SESSION['username']);
 if (!$paid) {
