@@ -1,4 +1,9 @@
-<?php session_start(); 
+<?php 
+session_start(); 
+$loggedIn = isset($_SESSION['username']);
+if (!$loggedIn)
+	header('location:mainLogin.php');
+
 include 'DatabaseFunctions.php';
 ?>
 <html>

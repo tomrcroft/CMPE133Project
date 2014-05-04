@@ -59,8 +59,12 @@ font-family: cursive;  font-weight: bold; width:250px; height:70%; text-align:ce
 
 div.menu{font-size:13pt; font-weight:bold; border-style:outset; width:90%; height:100%; margin-left:60px;
 	 background-color: silver;  margin-top:10px;}
-	 
-	 
+	 h2.subscribe{font-size:20pt;font-style: italic; font-family: cursive;text-align: center;text-shadow: blue;
+	 font-weight: bold; color:#493D26;background-color: #F0F8FF;}
+	 div.subscribe{font-size:13pt; font-weight:bold; border-style:outset; width:600px; height:400px; margin-left:370px; 
+	 background-color: silver;  margin-top:10px;}
+	 p.subscribe{margin-left:30px;}
+	 form.subscribe{text-align: right; width:500px;}
 	 
 	 
 	 

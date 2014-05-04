@@ -6,6 +6,7 @@ include 'DatabaseFunctions.php';
 <html>
 
 <head>
+<title> Search</title>
 <script src="scriptResult.js"></script>
 <link rel="stylesheet" type="text/css" href="formatresult.css">
 </head>

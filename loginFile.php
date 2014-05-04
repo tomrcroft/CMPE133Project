@@ -1,4 +1,5 @@
 <?php
+session_start();
 /*
  * Created on May 2, 2014
  *

@@ -1,3 +1,9 @@
+h1.search {background:gray; text-align:center; font-size: 45pt; margin-top:10px; padding-top:20px;
+	 font-weight: bold; color: blue; font-style: italic; font-family: fantasy,sans-serif;
+	 text-shadow: aqua;}
+img.small-logo{width:140px; height:140px; float:right;}
+div.menu{font-size:13pt; font-weight:bold; border-style:outset; width:90%; height:100%; margin-left:60px;
+	 background-color: silver;  margin-top:10px;}
 table.altrowstable {
 	font-family: verdana,arial,sans-serif;
 	font-size:11px;

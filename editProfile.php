@@ -1,10 +1,8 @@
 <?php 
 session_start(); 
-$_SESSION['loggedIn'] = true;
-if (!$_SESSION['loggedIn']) {
-	header('location: mainLogin.php');
-	die();
-}
+$loggedIn = isset($_SESSION['username']);
+if (!$loggedIn)
+	header('location:mainLogin.php');
 ?>
 <html>
 <head>
@@ -13,12 +11,6 @@ if (!$_SESSION['loggedIn']) {
 </head>
 <body style=" background-color: lightgray;">
 <?php	
-$_SESSION['username'] = unpaidUser;
-$passwordChanged = false;
-$passwordsdontmatch = false;
-$oldpasswordbad = false;
-$passwordsubmit = false;
-$requestPost = false;
 
 include 'DatabaseFunctions.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -38,7 +30,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     else if (isset($_POST['emailsubmit'])) {
     // set new email in database
-    changeEmail($_SESSION['myusername'], $_POST['email']);
+    	changeEmail($_SESSION['username'], $_POST['email']);
+    	$emailchanged = true;
     }
     else if (isset($_POST['jobdescriptionsubmit'])){
     	changeJobDescription($_SESSION['username'], $_POST['jobdescription']);
@@ -73,7 +66,8 @@ Re-enter Password: <br><input class="editprofile1" type="password" name="repeatn
 <input class="editprofile" type="submit" value="Submit" name="pwordsubmit">
 </form>
 <?php
-
+if ($loggedIn == false)
+	echo '$loggedIn = false';
 
 $paid = checkPaidSubscription($_SESSION['username']);
 if (!$paid) {
@@ -98,17 +92,15 @@ New email: <br><input class="editprofile1" type="text" name="email">
 <input class="editprofile" type="submit" value="Submit" name="emailsubmit">
 </form>
 
-<p class="editprofile">Interests:</p><br>
+<p class="editprofile">Interests:</p>
 <?php
-	$interestsArray = getInterests('unpaidUser');
-	echo count($interestsArray);
-	/*
+	$interestsArray = getInterests($_SESSION['username']);
 	if (0 < count($interestsArray)) {
-		for ($i = 0; i < sizeOf($interestsArray); $i++) {
+		foreach ($interestsArray as $interest) {
 			echo $interest;
-			echo '<input type="button" onclick="deleteInterest($interest)" value="Delete" />' + '<br>';
+			echo '<input type="button" onclick="deleteInterest($interest)" value="Delete" />'.'<br>';
 		}
-	} */
+	} 
 ?>
 <p class="editprofile">Add a new interest:</p>
 <form class="editprofile" method="post" action="editProfile.php">
@@ -143,17 +135,37 @@ New Skype ID: <br><input class="editprofile1" type="text" name="newskypeid">
 </form>
 
 <p class="editprofile">My Mentees:</p>
-<!-- 
-getMenteeByMentor($mentor)
-list mentees with buttons to remove from both parties and inform 
-<input class="editprofile" type="button" onclick="deleteMentorOrMentee.php" value="Delete">
--->
+<?php
+$menteesArray = getMenteeByMentor($_SESSION['username']);
+foreach ($menteesArray as $mentee) {
+	echo $mentee;
+	displaySkypeButton(getSkypeID($mentee));
+	echo '<input type="button" onclick="" value="Remove Relationship" />'.'<br>';
+}
+?>
 <p class="editprofile">My Mentors:</p>
-<!-- 
-getMentorByMentee($mentee)
-list mentees with buttons to remove from both parties and inform 
-use button after each <input class="editprofile" type="button" onclick="deleteMentorOrMentee.php" value="Delete">
--->
+<?php
+$mentorsArray = getMentorByMentee($_SESSION['username']);
+foreach ($mentorsArray as $mentor) {
+	echo $mentor;
+	displaySkypeButton(getSkypeID($mentor));
+	echo '<input type="button" onclick="" value="Remove Relationship" />'.'<br>';
+}
+
+function displaySkypeButton($skypeID) {
+echo '<script type="text/javascript" src="http://www.skypeassets.com/i/scom/js/skype-uri.js"></script>';
+echo '<div id="SkypeButton_Call">';
+echo '<script type="text/javascript">';
+echo 'Skype.ui({';
+echo '"name": "dropdown",';
+echo '"element": "SkypeButton_Call",';
+echo '"participants": ["'.$skypeID.'"],';
+echo '"imageSize": 32';
+echo '});';
+echo '</script>';
+echo '</div>';
+}
+?>
 
 </div><br>
 </form>

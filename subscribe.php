@@ -1,10 +1,18 @@
 <html>
 <head>
+<title>Subscribe</title>
+
+
+<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
-<body>
-<h1>Become a Premium member!</h1>
-<p>All it takes is $5 a month to remove all limits of a free account!<p>
+<body style=" background-color: lightgray;">
+<h1 class="mainlogin"><img class="small-logo" src="sjsu6.png" style="width: 88px; height: 88px; float:left; 
+background-color:gray; margin-left:30px;margin-bottom:10px; ">Mentor Web</h1>
+<div class="subscribe">
+
+<h2 class="subscribe">Become a Premium member!</h2>
+<p class="subscribe">All it takes is <span style="font-size:19pt;font-weight:bold;color:#5FFB17;">$ </span><span style="font-size:16pt;font-weight:bold;">5.00</span> a month to remove all limits of a free account!<p>
 <?php 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -30,12 +38,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-Card Holder's name: <input type="text" name="ccname"><br>
-Card number: <input type="text" name="ccnum"><br>
-CCV number: <input type="text" name="ccv"><br>
-Expiration Date (mmyyyy): <input type="text" name="expirydate"><br>
-<input type="submit" name="ccsubmit" value="Submit">
+<form class="subscribe" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+Card Holder's name: <input class="textbox" type="text" name="ccname"><br><br>
+Card number: <input class="textbox" type="text" name="ccnum"><br><br>
+CCV number: <input class="textbox" type="text" name="ccv"><br><br>
+Expiration Date (mmyyyy): <input class="textbox" type="text" name="expirydate"><br><br>
+
+<input class="button" type="submit" name="ccsubmit" value="Submit">
+
 </form>
 
 <?php
@@ -54,5 +64,6 @@ function checkExpiryDate($date) {
     return true;
 }
 ?>
+</div>
 </body>
 </html>

@@ -1,4 +1,6 @@
-
+<?php
+session_start();
+?>
 <html>
 <head>
 <title>Main Menu</title>
@@ -38,7 +40,7 @@ background-color:gray; margin-left:30px; margin-bottom:10px; ">Mentor Web</h1>
  * To change the template for this generated file go to
  * Window - Preferences - PHPeclipse - PHP - Code Templates
  */
-session_start();
+
 include "DatabaseFunctions.php";
 if(isset($_SESSION['username'])){ 
  echo "Hello ".$_SESSION['username'];
