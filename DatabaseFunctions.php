@@ -462,5 +462,23 @@ function deleteMenteeRelationship($mentor, $mentee)
     
     mysqli_query($con,"delete from mentors where mentorName='$mentor' and menteeName='$mentee'");
 }
+
+function addCreditCard($uName, $creditCardNumber, $cvv, $nameOnCard, $expDate)
+{
+    global $con;
+    
+    mysqli_query($con,"insert into creditCardInfo values('$uName', '$creditCardNumber', '$cvv', '$nameOnCard', '$expDate')");
+}
+
+function getLastFourDigitsOfCreditCardNumber($uName)
+{
+    global $con;
+    
+    $result = mysqli_query($con,"select cardNumber from creditCardInfo where username='testUser'");
+    $resultArray = mysqli_fetch_array($result);
+    $output = substr($resultArray[0], 12);
+    
+    return $output;
+}
 //TODO: location database functions.
 ?>
