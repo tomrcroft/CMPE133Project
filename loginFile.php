@@ -26,6 +26,7 @@ if(validatePassword($_POST['myusername'],$_POST['mypassword'])== 1){
 
 // Register $myusername, $mypassword and redirect to file "login_success.php"
 $_SESSION['username']=$_POST['myusername'];
+$_SESSION['loggedIn'] = true;
 header("location:mainWebpage.php");
 }
 else {

@@ -13,7 +13,7 @@ if (!$_SESSION['loggedIn']) {
 </head>
 <body style=" background-color: lightgray;">
 <?php	
-$_SESSION['username'] = mentor1;
+$_SESSION['username'] = mentee1;
 $passwordChanged = false;
 $passwordsdontmatch = false;
 $oldpasswordbad = false;
@@ -146,6 +146,7 @@ New Skype ID: <br><input class="editprofile1" type="text" name="newskypeid">
 $menteesArray = getMenteeByMentor($_SESSION['username']);
 foreach ($menteesArray as $mentee) {
 	echo $mentee;
+	displaySkypeButton(getSkypeID($mentee));
 	echo '<input type="button" onclick="" value="Remove Relationship" />'.'<br>';
 }
 ?>
@@ -154,7 +155,22 @@ foreach ($menteesArray as $mentee) {
 $mentorsArray = getMentorByMentee($_SESSION['username']);
 foreach ($mentorsArray as $mentor) {
 	echo $mentor;
+	displaySkypeButton(getSkypeID($mentor));
 	echo '<input type="button" onclick="" value="Remove Relationship" />'.'<br>';
+}
+
+function displaySkypeButton($skypeID) {
+echo '<script type="text/javascript" src="http://www.skypeassets.com/i/scom/js/skype-uri.js"></script>';
+echo '<div id="SkypeButton_Call">';
+echo '<script type="text/javascript">';
+echo 'Skype.ui({';
+echo '"name": "dropdown",';
+echo '"element": "SkypeButton_Call",';
+echo '"participants": ["'.$skypeID.'"],';
+echo '"imageSize": 32';
+echo '});';
+echo '</script>';
+echo '</div>';
 }
 ?>
 
