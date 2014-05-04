@@ -16,27 +16,6 @@ if (!$loggedIn)
 include 'DatabaseFunctions.php';
 ?>
 
-<?php
-if (isset($_POST['submit'])) { 
- 	
-	if(register($_POST['job'] ,$_POST['interests'])==1)
-	{
-		$results = getUsernamesUsingInterests('job', 'interests');		
-		
-		/******************************************************************/
-		 /** Check if there are no results**/
-		 if(empty($results))
-		 {
-			echo "No results found";
-			exit;
-		 }	
-		 /** I there are results **/
-		 showM($usernames);
-		/******************************************************************/
-    }
- }
-?>
-
 <html>
  <head>
   <title>Mentor Search</title>
@@ -54,7 +33,35 @@ background-color:gray; margin-left:30px; margin-bottom:10px; ">Mentor Web</h1>
         <p><input type="submit" name="submit"/></p>
     </form> 
 	
+
+<?php
+if (isset($_POST['submit'])) { 
+ 	
+	$j = $_POST['job'];
+	$i = $_POST['interests'];
 	
+	if (empty($j) || empty($i)) {
+		echo "The fields are empty";
+		exit;
+	}
+	else
+	//if(register($_POST['job'] ,$_POST['interests']) == 1)
+	{
+		$results = getUsernamesUsingInterests('job', 'interests');		
+		
+		/******************************************************************/
+		 /** Check if there are no results**/
+		 if(empty($results))
+		 {
+			echo "No results found";
+			exit;
+		 }	
+		 /** I there are results **/
+		 showM($usernames);
+		/******************************************************************/
+    }
+ }
+?>	
 
 <?php
 	/******************************************************************/
