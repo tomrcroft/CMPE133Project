@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			$expirydateerror = true;
 		}
 		if (!$ccnameerror && !$ccnumerror && !$ccverror && !$expirydateerror) {
-			//update cc info in database
+			addCreditCard($_SESSION['username'], $_POST['ccnum'], $_POST['cvv'], $_POST['ccname'], $_POST['expirydate']);
 			setSubscriptionStatus($_SESSION['username'], true);
 		}
     }
