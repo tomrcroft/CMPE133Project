@@ -474,7 +474,7 @@ function getLastFourDigitsOfCreditCardNumber($uName)
 {
     global $con;
     
-    $result = mysqli_query($con,"select cardNumber from creditCardInfo where username='testUser'");
+    $result = mysqli_query($con,"select cardNumber from creditCardInfo where username='$uName'");
     $resultArray = mysqli_fetch_array($result);
     $output = substr($resultArray[0], 12);
     
