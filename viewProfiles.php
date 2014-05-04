@@ -41,12 +41,7 @@ Search by an Interest:<br>
 <p class="viewprofile">
  <input class="textbox2" type="text" name="interest">
 <input class="button1" type="submit" value="Submit" name="interestsearchsubmit"></p>
-</form>
-<br>
-</div>
-</body>
 
-</html>
 
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -58,6 +53,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     else if (isset($_POST['interestsearchsubmit'])){
     	displayUserProfilesByInterest($_POST['interest']);
+    }
+    else if (isset($_POST['user'])){
+    	displayUserProfile($_POST['user']);
     }
 }
 
@@ -104,14 +102,34 @@ function displayUserProfileByEmail($email) {
  * @return void
  */
 function displayUserProfilesByInterest($interest) {
+	echo '<form class="editprofile" method="POST" action="viewProfiles.php">';
+	$paid = checkPaidSubscription($_SESSION['username'])
 	$userArray = getUsernamesUsingInterests($interest);
+	$limit = count($userArray);
+	if (!$paid) {
+		if (count($userArray) > 5)
+			$limit = 5;
+	}	
+	if ($limit != count($userArray))
+		echo '<p>Omitting results, to view full results please become a premium member</p>';
+	for ($i = 0; $i < $limit; $i++) {
+		echo '<br><input type="radio" name="user" value="'.$userArray[$i].'" />'.$userArray[$i];
+	}	
+	echo '<br>';
+	if (0 < count($userArray))
+		echo '<input class="viewprofile" type="submit" value="View Profile" name="viewprofile"/>';
+	else 
+		echo 'No users found with an interest in '.$interest.', please try another interest';
+	/*
 	if (count($userArray > 0)) {
 		foreach ($userArray as $user)
 			echo '<br> Username:<button class="button1" type="button" onclick=displayUserProfile('.$user.')>'.$user.'</button>';
 	}
 	else 
-		echo 'No users found with an interest in '.$interest.', please try another interest';
+		echo 'No users found with an interest in '.$interest.', please try another interest';*/
 }
+
+
 
 /*
  * Gets all user information from the database, and displays their information 
@@ -122,15 +140,18 @@ function displayUserProfilesByInterest($interest) {
  * @return void
  */
 function displayUserProfile($user) {
-	echo '<p>Username: '.$user.'</p>';
-	echo '<br>';
+	echo '<br><p>Username: '.$user.'</p>';
+	//echo '<br>';
 	echo '<p>Email Address: '.getEmail($user).'</p>';
-	displaySkypeButton(getskypeID($user));
-	echo '<p>Interests:</p>';
+	if (checkPaidSubscription($_SESSION['username']))
+		displaySkypeButton(getskypeID($user));
+	else 
+		echo '<p">To start a Skype conversation with '.$user.' please become a premium member</p>';
+	echo '<p">Interests:</p>';
 	$interestsArray = getInterests($user);
 	for ($i = 0; $i < count($interestsArray); $i++) {
 		echo '<p>'.$interestsArray[$i].'</p>';
-		echo '<br>';
+		//echo '<br>';
 	}
 	echo '<p>Job Description: '.getjobDescription($user).'</p>';
 }
@@ -159,3 +180,9 @@ echo '</script>';
 echo '</div>';
 }
 ?>
+</form>
+<br>
+</div>
+</body>
+
+</html>
