@@ -427,5 +427,40 @@ function getMentorByMentee($mentee)
     }
     return $resultArray;
 }
+
+function deleteInterest($uName, $interest)
+{
+    global $con;
+    
+    mysqli_query($con,"delete from interests where username='$uName' and interest='$interest';");
+}
+
+function searchByJobDescriptionAndInterests($jd, $interest)
+{
+    global $con;
+    
+    $resultJob = mysqli_query($con,"select username from userInfo WHERE jobDescription='$jd'");
+    $resultJobArray = mysqli_fetch_all($resultJob);
+    $output = array();
+    for ($x=0; $x<=sizeof($resultJobArray)-1; $x++) {
+        array_push($output, $resultJobArray[$x][0]);
+    }
+    
+    
+    $result = mysqli_query($con,"select username from interests WHERE interest='$interest'");
+    $resultArray = mysqli_fetch_all($result);
+    for ($x=0; $x<=sizeof($resultArray)-1; $x++) {
+        array_push($output, $resultArray[$x][0]);
+    }
+    
+    return $output;
+}
+
+function deleteMenteeRelationship($mentor, $mentee)
+{
+    global $con;
+    
+    mysqli_query($con,"delete from mentors where mentorName='$mentor' and menteeName='$mentee'");
+}
 //TODO: location database functions.
 ?>
