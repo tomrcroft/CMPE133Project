@@ -11,6 +11,24 @@ session_start();
 
 <h1 class="mainlogin"><img class="small-logo" src="sjsu6.png" style="width: 88px; height: 88px; float:left; 
 background-color:gray; margin-left:30px; margin-bottom:10px; ">Mentor Web</h1>
+<?php
+/*
+ * Created on May 1, 2014
+ *
+ * To change the template for this generated file go to
+ * Window - Preferences - PHPeclipse - PHP - Code Templates
+ */
+
+include "DatabaseFunctions.php";
+if(isset($_SESSION['username'])){ 
+ echo "Hello ".$_SESSION['username'];
+}
+else
+{
+	echo "Please Log In ";
+}  
+ 
+?>
 <div class="menu">
 <h2 class="editprofile1" style=" font-size: 20pt;font-style: italic;
 	 font-family: cursive;font-weight: bold; margin-left:525px;}"> Main Menu</h2>
@@ -33,21 +51,3 @@ background-color:gray; margin-left:30px; margin-bottom:10px; ">Mentor Web</h1>
 </body>
 </html>
 
-<?php
-/*
- * Created on May 1, 2014
- *
- * To change the template for this generated file go to
- * Window - Preferences - PHPeclipse - PHP - Code Templates
- */
-
-include "DatabaseFunctions.php";
-if(isset($_SESSION['username'])){ 
- echo "Hello ".$_SESSION['username'];
-}
-else
-{
-	echo "Please Log In ";
-}  
- 
-?>
