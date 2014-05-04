@@ -73,7 +73,7 @@ if (!$paid) {
     echo '<p class="editprofile">Would you like to become a premium member<br> and remove all limits on mentors and mentees?';
     echo '<form action="subscribe.php"><input class="editprofile" type="submit" value="Subscribe"style="margin-left:402px;" ></p></form>'; 
 } else { // change to else if ($_SESSION['paid'] == true)
-    $creditCardLastFourDigits = 1111; //change to grab credit card info
+    $creditCardLastFourDigits = getLastFourDigitsOfCreditCardNumber($_SESSION['username']); //change to grab credit card info
     echo '<p class ="editprofile">Credit Card: ************'.$creditCardLastFourDigits.'</p>';
     echo '<input class ="editprofile" type="button" onlick="subscribe.php" value="Change">';
 }
