@@ -5,20 +5,23 @@
  * change 
  * @author Jordan Watts
  * @copyright 2014
- */
+ *
+*/ 
  
-/*session_start(); 
+session_start(); 
 $loggedIn = isset($_SESSION['username']);
 if (!$loggedIn)
 	header('location:mainLogin.php');
-*/
-include 'DatabaseFunctions.php';
 
+include 'DatabaseFunctions.php';
+?>
+
+<?php
 if (isset($_POST['submit'])) { 
  	
 	if(register($_POST['job'] ,$_POST['interests'])==1)
 	{
-		//results = getUsernamesUsingInterests('job', 'interests');		
+		$results = getUsernamesUsingInterests('job', 'interests');		
 		
 		/******************************************************************/
 		 /** Check if there are no results**/
@@ -40,9 +43,12 @@ if (isset($_POST['submit'])) {
   <script src="scriptResult.js"></script>
   <link rel="stylesheet" type="text/css" href="formatresult.css">
  </head>
- 
- <body>
-    <form action="action.php" method="post">
+ <body style=" background-color: lightgray;">
+<h1 class="search"><img class="small-logo" src="sjsu6.png" style="width: 88px; height: 88px; float:left; 
+background-color:gray; margin-left:30px; margin-bottom:10px; ">Mentor Web</h1>
+
+<div class="menu">
+	<form action="<?=$_SERVER['PHP_SELF'];?>" method="post">
         <p>Job Category: <input type="text" name="job" /></p>
         <p>Specific Interests: <input type="text" name="interests" /></p>
         <p><input type="submit" name="submit"/></p>
@@ -76,6 +82,7 @@ if (isset($_POST['submit'])) {
 	/******************************************************************/
 ?>	
 		
+</div>
 </body>
 </html>
 
