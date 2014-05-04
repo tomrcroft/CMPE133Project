@@ -7,7 +7,7 @@ if (!$loggedIn)
 <html>
 <head>
 <title>Edit Profile</title>
-<link rel="stylesheet" type="text/css" href="style_editprofile.css">
+<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body style=" background-color: lightgray;">
 <?php	
