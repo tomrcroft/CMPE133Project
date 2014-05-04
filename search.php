@@ -41,7 +41,7 @@ if (isset($_POST['submit'])) {
 	$i = $_POST['interests'];
 	
 	if (empty($j) || empty($i)) {
-		echo "The fields are empty";
+		echo "One or both fields are empty";
 		exit;
 	}
 	else
