@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	if (isset($_POST['ccsubmit'])) {
 		$ccnameerror = false;
 		$ccnumerror = false;
-		$ccverror = false;
+		$cvverror = false;
 		$expirydateerror = false;
 
 		if (!isset($_POST['ccname'])) {
@@ -37,8 +37,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		if (!isset($_POST['ccnum']) || strlen((string) $_POST['ccnum']) != 16) {
 			$ccnumerror = true;
 		}
-		if (!isset($_POST['ccv']) || strlen((string) $_POST['ccv']) != 3) {
-			$ccverror = true;
+		if (!isset($_POST['cvv']) || strlen((string) $_POST['cvv']) != 3) {
+			$cvverror = true;
 		}
 		if (!isset($_POST['expirydate']) || !checkExpiryDate($_POST['expirydate'])) {
 			$expirydateerror = true;
@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <form class="subscribe" method="post" action="subscribe.php">
 Card Holder's name: <input class="textbox" type="text" name="ccname"><br><br>
 Card number: <input class="textbox" type="text" name="ccnum"><br><br>
-CCV number: <input class="textbox" type="text" name="ccv"><br><br>
+CCV number: <input class="textbox" type="text" name="cvv"><br><br>
 Expiration Date (mmyyyy): <input class="textbox" type="text" name="expirydate"><br><br>
 
 <input class="button" type="submit" name="ccsubmit" value="Submit">
