@@ -76,7 +76,7 @@ if (!$paid) {
 } else { // change to else if ($_SESSION['paid'] == true)
     $creditCardLastFourDigits = 1111; //change to grab credit card info
     echo '<p class ="editprofile">Credit Card: ************'.$creditCardLastFourDigits.'</p>';
-    echo '<input class ="editprofile" type="button" onlick="changeCreditCard.php" value="Change">';
+    echo '<input class ="editprofile" type="button" onlick="subscribe.php" value="Change">';
 }
 ?>
 

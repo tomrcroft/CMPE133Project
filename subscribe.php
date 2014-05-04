@@ -1,3 +1,10 @@
+<?php
+session_start(); 
+$loggedIn = isset($_SESSION['username']);
+if (!$loggedIn)
+	header('location:mainLogin.php');
+include 'DatabaseFunctions.php';
+?>
 <html>
 <head>
 <title>Subscribe</title>
@@ -10,10 +17,11 @@
 <h1 class="mainlogin"><img class="small-logo" src="sjsu6.png" style="width: 88px; height: 88px; float:left; 
 background-color:gray; margin-left:30px;margin-bottom:10px; ">Mentor Web</h1>
 <div class="subscribe">
-
-<h2 class="subscribe">Become a Premium member!</h2>
-<p class="subscribe">All it takes is <span style="font-size:19pt;font-weight:bold;color:#5FFB17;">$ </span><span style="font-size:16pt;font-weight:bold;">5.00</span> a month to remove all limits of a free account!<p>
-<?php 
+<?php
+if (!checkPaidSubscription($_SESSION['username'])) {
+	echo '<h2 class="subscribe">Become a Premium member!</h2>';
+	echo '<p class="subscribe">All it takes is <span style="font-size:19pt;font-weight:bold;color:#5FFB17;">$ </span><span style="font-size:16pt;font-weight:bold;">5.00</span> a month to remove all limits of a free account!<p>';
+}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	// validate and then enter credit card info to database
@@ -27,18 +35,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			$ccnameerror = true;
 		}
 		if (!isset($_POST['ccnum']) || strlen((string) $_POST['ccnum']) != 16) {
-			$error = true;
+			$ccnumerror = true;
 		}
 		if (!isset($_POST['ccv']) || strlen((string) $_POST['ccv']) != 3) {
-			$error = true;
+			$ccverror = true;
 		}
 		if (!isset($_POST['expirydate']) || !checkExpiryDate($_POST['expirydate'])) {
-			$error = true;
+			$expirydateerror = true;
+		}
+		if (!$ccnameerror && !$ccnumerror && !$ccverror && !$expirydateerror) {
+			//update cc info in database
+			setSubscriptionStatus($_SESSION['username'], true);
 		}
     }
 }
 ?>
-<form class="subscribe" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+<form class="subscribe" method="post" action="subscribe.php">
 Card Holder's name: <input class="textbox" type="text" name="ccname"><br><br>
 Card number: <input class="textbox" type="text" name="ccnum"><br><br>
 CCV number: <input class="textbox" type="text" name="ccv"><br><br>
