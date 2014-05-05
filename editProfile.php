@@ -66,7 +66,7 @@ background-color:gray; margin-left:30px;margin-bottom:10px; ">Mentor Web</h1>
 
         <nav class="logout"><a class="logout1" href="calendar.php">Calendar</a></nav>
         <br>
-        <nav class="logout"><a class="logout1" href="search.php">Search Mentor or Mentee</a></nav>
+        <nav class="logout"><a class="logout1" href="search.php">Search</a></nav>
     </nav>
 </div>
 <form>
