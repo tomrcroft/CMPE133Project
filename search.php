@@ -40,127 +40,109 @@ include 'DatabaseFunctions.php';
                 <nav class="logout"><a class="logout1" href="search.php">Search Mentor or Mentee</a></nav>
             </nav>
         </div>
+        <div class="menu">
+            <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
+                <h1>Mentor/Mentee Search</h1>
+                <p>Job Category: <input type="text" name="job" /></p>
+                <p>Specific Interests: <input type="text" name="interests" /></p>
+                <p><input type="submit" name="submit"/></p>
 
-        <?php
-        /* Press Submit button */
-        if (isset($_POST['submit'])) {
 
-            if (empty($_POST['job']) && empty($_POST['interests'])) {
-                echo '<font color="red">Both fields are empty</color>';
-                exit;
-            } else {
-                $results = searchByJobDescriptionAndInterests($_POST['job'], $_POST['interests']);
-                $results = array_unique($results);
+                <?php
+                /* Press Submit button */
+                if (isset($_POST['submit'])) {
 
-                $_SESSION['results'] = $results;
+                    if (empty($_POST['job']) && empty($_POST['interests'])) {
+                        echo '<font color="red">Both fields are empty</color>';
+                        exit;
+                    } else {
+                        $results = searchByJobDescriptionAndInterests($_POST['job'], $_POST['interests']);
 
-                if (empty($results)) {
-                    echo "No results found";
-                    exit;
-                } else {
+                        $_SESSION['results'] = $results;
+
+                        if (empty($results)) {
+                            echo "No results found";
+                            exit;
+                        } else {
+                            echo '<p><input type="submit" value= "Show All" name="all"/>';
+                            echo ' <input type="submit"  value= "Show Mentors" name="mentors"/>';
+                            showResults($_SESSION['results']);
+                        }
+                    }
+                }
+
+                /* Press Show All button */
+                if (isset($_POST['all'])) {
                     echo '<p><input type="submit" value= "Show All" name="all"/>';
                     echo ' <input type="submit"  value= "Show Mentors" name="mentors"/>';
-                    echo ' <input type="submit"  value= "Show Mentees" name="mentees"/>';
                     showResults($_SESSION['results']);
                 }
+
+                /* Press Show Mentors button */
+                if (isset($_POST['mentors'])) {
+                    echo '<p><input type="submit" value= "Show All" name="all"/>';
+                    echo ' <input type="submit"  value= "Show Mentors" name="mentors"/>';
+                    showMentors($_SESSION['results']);
+                }
+                ?>	
+
+            </form> 
+
+
+            <?php
+
+            /**
+             *  This function show all the results from the search in a table in the same page
+             *  with all the information of the users 
+             *  PRE:   $results , an array with all the results
+             *  POST:  a table with all the results
+             * */
+            function showResults($results) {
+                echo '<table width="500" class="altrowstable" id="alternatecolor"><tr><th>Name</th><th>Information</th><th>Contact</th></tr>';
+                foreach ($results as $uName) {
+                    informationSearch($uName);
+                }
+                echo '</table>';
             }
-        }
 
-        /* Press Show All button */
-        if (isset($_POST['all'])) {
-            echo '<p><input type="submit" value= "Show All" name="all"/>';
-            echo ' <input type="submit"  value= "Show Mentors" name="mentors"/>';
-            echo ' <input type="submit"  value= "Show Mentees" name="mentees"/>';
-            showResults($_SESSION['results']);
-        }
-
-        /* Press Show Mentees button */
-        if (isset($_POST['mentees'])) {
-            echo '<p><input type="submit" value= "Show All" name="all"/>';
-            echo ' <input type="submit"  value= "Show Mentors" name="mentors"/>';
-            echo ' <input type="submit"  value= "Show Mentees" name="mentees"/>';
-            showMentees($_SESSION['results']);
-        }
-
-        /* Press Show Mentors button */
-        if (isset($_POST['mentors'])) {
-            echo '<p><input type="submit" value= "Show All" name="all"/>';
-            echo ' <input type="submit"  value= "Show Mentors" name="mentors"/>';
-            echo ' <input type="submit"  value= "Show Mentees" name="mentees"/>';
-            showMentors($_SESSION['results']);
-        }
-        ?>	
-
-    </form> 
-
-
-    <?php
-
-    /**
-     *  This function show all the results from the search in a table in the same page
-     *  with all the information of the users 
-     *  PRE:   $results , an array with all the results
-     *  POST:  a table with all the results
-     * */
-    function showResults($results) {
-        echo '<table width="500" class="altrowstable" id="alternatecolor"><tr><th>Name</th><th>Information</th><th>Contact</th></tr>';
-        foreach ($results as $uName) {
-            informationSearch($uName);
-        }
-        echo '</table>';
-    }
-
-    /**
-     *  This function show all the mentors that are in the results
-     *  PRE:   $results, an array with all the results
-     *  POST:  a table with all the mentors that were in the results
-     * */
-    function showMentors($results) {
-        echo '<table width="500" class="altrowstable" id="alternatecolor"><tr><th>Name</th><th>Information</th><th>Contact</th></tr>';
-        foreach ($results as $uName) {
-            if (isMentor($uName)) {
-                informationSearch($uName);
+            /**
+             *  This function show all the mentors that are in the results
+             *  PRE:   $results, an array with all the results
+             *  POST:  a table with all the mentors that were in the results
+             * */
+            function showMentors($results) {
+                $count = 0;
+                echo '<table width="500" class="altrowstable" id="alternatecolor"><tr><th>Name</th><th>Information</th><th>Contact</th></tr>';
+                foreach ($results as $uName) {
+                    if (isMentor($uName)) {
+                        informationSearch($uName);
+                        $count++;
+                    }
+                }
+                echo '</table>';
             }
-        }
-        echo '</table>';
-    }
 
-    /** 	
-     *  This function show all the mentees that are in the results
-     *  PRE:   $results, an array with all the results
-     *  POST:  a table with all the mentees that were in the results
-     * */
-    function showMentees($results) {
-        echo '<table width="500" class="altrowstable" id="alternatecolor"><tr><th>Name</th><th>Information</th><th>Contact</th></tr>';
-        foreach ($results as $uName) {
-            if (isMentee($uName)) {
-                informationSearch($uName);
+            /**
+             *  This function retrieved all the information from uName, and add a row in the created table
+             *  PRE:   $uName  a user
+             *  POST:  a row in the table with the user's information
+             * */
+            function informationSearch($uName) {
+                $email = getEmail($uName);
+                $jobDescription = getjobDescription($uName);
+                $skypeID = getSkypeID($uName);
+                $allInterests = getInterests($uName);
+
+                echo '<tr><td width="10%"><b>' . $uName . '</td><td width="65%"><b>Email: </b>' . $email . "<p><b> Job Description: </b>" . $jobDescription . "<p><b>Interests: </b>";
+
+                foreach ($allInterests as $interest) {
+                    echo ' ' . $interest . ', ';
+                }
+
+                echo '<b></td><td width="15%">' . $skypeID . "</td></tr>";
             }
-        }
-        echo '</table>';
-    }
+            ?>	
 
-    /**
-     *  This function retrieved all the information from uName, and add a row in the created table
-     *  PRE:   $uName  a user
-     *  POST:  a row in the table with the user's information
-     * */
-    function informationSearch($uName) {
-        $email = getEmail($uName);
-        $jobDescription = getjobDescription($uName);
-        $skypeID = getSkypeID($uName);
-        $allInterests = getInterests($uName);
-
-        echo '<tr><td width="10%"><b>' . $uName . '</td><td width="65%"><b>Email: </b>' . $email . "<p><b> Job Description: </b>" . $jobDescription . "<p><b>Interests: </b>";
-
-        foreach ($allInterests as $interest) {
-            echo ' ' . $interest . ', ';
-        }
-
-        echo '<b></td><td width="15%">' . $skypeID . "</td></tr>";
-    }
-    ?>	
-
-</div>
-</body>
+        </div>
+    </body>
 </html>
