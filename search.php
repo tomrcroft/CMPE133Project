@@ -51,7 +51,8 @@ include 'DatabaseFunctions.php';
                 <p class="search">Job Category :  <input class="textbox22" type="text"   name="job" ></p>
                 <p class="search">Specific Interests: <input class="textbox11" type="text"   name="interests" ></p>
                 <input class="button1" align="left" type="submit" name="submit" value="Search">
-
+				<br>
+				<br>
 				
 
                 <?php
