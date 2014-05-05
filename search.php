@@ -40,7 +40,8 @@ include 'DatabaseFunctions.php';
                 <br>
                 <nav class="logout"><a class="logout1" href="search.php">Search</a></nav>
             </nav>
-        
+        </div>
+		<div class="menu">
             <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
                 <h1>Mentor/Mentee Search</h1>
                 <p>Job Category: <input type="text" name="job" /></p>
