@@ -1,24 +1,19 @@
 
 <?php
-/* 
+/*
  * The following code was created using a tutorial by "unknownghost03"
  * The url for his tutorial is as follows "https://www.youtube.com/user/unknownghost03"
  * I do not own the right to code but used it as a guide to create the calender.
  */
 session_start();
-$loggedIn=isset($_SESSION['username']);
-if(!$loggedIn)
-{
+$loggedIn = isset($_SESSION['username']);
+if (!$loggedIn) {
     header('location:mainLogin.php');
 }
 include 'DatabaseFunctions.php';
-
-
 ?>
 <?php
-$con=mysqli_connect("mydbinstance.czp48rfeukis.us-west-2.rds.amazonaws.com","tomrcroft","password","cmpe133Project");
-
-
+$con = mysqli_connect("mydbinstance.czp48rfeukis.us-west-2.rds.amazonaws.com", "tomrcroft", "password", "cmpe133Project");
 ?>
 <html>
     <head>
@@ -60,6 +55,23 @@ $con=mysqli_connect("mydbinstance.czp48rfeukis.us-west-2.rds.amazonaws.com","tom
         </style>
     </head>
     <body>
+        <div class="menu">
+            <nav class="menu">
+
+                <nav class="logout"><a class="logout1"  href="logout.php">Log out</a></nav>
+                <br>
+                <nav class="logout"><a class="logout1" href="editProfile.php">Edit Profile</a></nav>
+                <br>
+                <nav class="logout"><a class="logout1" href="viewProfiles.php">View Profile</a></nav>
+                <br>
+
+                <nav class="logout"><a class="logout1" href="calendar.php">Calendar</a></nav>
+                <br>
+                <nav class="logout"><a class="logout1" href="search.php">Search Mentor or Mentee</a></nav>
+            </nav>
+        </div>
+        <br>
+        <br>
         <?php
         if (isset($_GET['day'])) {
             $day = $_GET['day'];
@@ -83,12 +95,12 @@ $con=mysqli_connect("mydbinstance.czp48rfeukis.us-west-2.rds.amazonaws.com","tom
         ?>
         <?php
         if (isset($_GET['add'])) {
-            
-            $uName=$_SESSION['username'];
+
+            $uName = $_SESSION['username'];
             $title = $_POST['txttitle'];
             $detail = $_POST['txtdetail'];
             $eventdate = $month . "/" . $day . "/" . $year;
-            $sqlinsert = "INSERT into eventcalendar(username,Title,Detail,eventDate,dateAdded) values ('" . $uName. "','" . $title . "','" . $detail . "','" . $eventdate . "',now())";
+            $sqlinsert = "INSERT into eventcalendar(username,Title,Detail,eventDate,dateAdded) values ('" . $uName . "','" . $title . "','" . $detail . "','" . $eventdate . "',now())";
             $resultinginsert = mysqli_query($con, $sqlinsert);
             if ($resultinginsert) {
                 echo "Event was successfully Added...";
@@ -96,9 +108,8 @@ $con=mysqli_connect("mydbinstance.czp48rfeukis.us-west-2.rds.amazonaws.com","tom
                 echo "Event Failed to be Added....";
             }
         }
-         if(isset($_GET['delete']))
-         {
-            $uName=$_SESSION['username'];
+        if (isset($_GET['delete'])) {
+            $uName = $_SESSION['username'];
             $title = $_POST['txttitle'];
             $eventdate = $month . "/" . $day . "/" . $year;
             $sqldelete = "DELETE FROM eventcalendar WHERE username='$uName' and Title='$title' and eventDate='$eventdate'";
@@ -108,8 +119,7 @@ $con=mysqli_connect("mydbinstance.czp48rfeukis.us-west-2.rds.amazonaws.com","tom
             } else {
                 echo "Event Failed to be Deleted....";
             }
-         }
-        
+        }
         ?>
 
         <table border='0'>
@@ -151,11 +161,11 @@ $con=mysqli_connect("mydbinstance.czp48rfeukis.us-west-2.rds.amazonaws.com","tom
                     $daystring = "0" . $daystring;
                 }
                 $todaysDate = date("m/d/Y", strtotime('-1 day'));
-               
+
                 $dateToCompare = $monthstring . '/' . $daystring . '/' . $year;
                 echo "<td align='center' ";
                 if ($todaysDate == $dateToCompare) {
-                   echo "class='today'"; 
+                    echo "class='today'";
                 } else {
                     $sqlCount = "select * from eventcalendar where eventDate='" . $dateToCompare . "'";
                     $noOfEvent = mysqli_num_rows(mysqli_query($con, $sqlCount));
@@ -181,7 +191,7 @@ $con=mysqli_connect("mydbinstance.czp48rfeukis.us-west-2.rds.amazonaws.com","tom
                 include("deleteForm.php");
             }
             $sqlEvent = "select * FROM eventcalendar where eventDate='" . $month . "/" . $day . "/" . $year . "'";
-            $resultEvents = mysqli_query($con,$sqlEvent);
+            $resultEvents = mysqli_query($con, $sqlEvent);
             echo "<hr>";
             while ($events = mysqli_fetch_array($resultEvents)) {
                 echo "Title: " . $events['Title'] . "<br>";
@@ -189,5 +199,6 @@ $con=mysqli_connect("mydbinstance.czp48rfeukis.us-west-2.rds.amazonaws.com","tom
             }
         }
         ?>
+
     </body>
 </html> 

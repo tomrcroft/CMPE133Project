@@ -10,6 +10,7 @@ if (!$loggedIn)
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body style=" background-color: lightgray;">
+    
 <?php	
 
 include 'DatabaseFunctions.php';
@@ -52,6 +53,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <h1 class="editprofile"><img class="small-logo" src="sjsu6.png" style="width: 88px; height: 88px; float:left; 
 background-color:gray; margin-left:30px;margin-bottom:10px; ">Mentor Web</h1>
 <br>
+<br>
+<div class="menu">
+    <nav class="menu">
+
+        <nav class="logout"><a class="logout1"  href="logout.php">Log out</a></nav>
+        <br>
+        <nav class="logout"><a class="logout1" href="editProfile.php">Edit Profile</a></nav>
+        <br>
+        <nav class="logout"><a class="logout1" href="viewProfiles.php">View Profile</a></nav>
+        <br>
+
+        <nav class="logout"><a class="logout1" href="calendar.php">Calendar</a></nav>
+        <br>
+        <nav class="logout"><a class="logout1" href="search.php">Search Mentor or Mentee</a></nav>
+    </nav>
+</div>
 <form>
 
 <div class="editprofile">
@@ -186,3 +203,4 @@ echo '</div>';
 <br><br>
 </body>
 </html>
+

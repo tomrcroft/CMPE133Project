@@ -15,11 +15,30 @@ include 'DatabaseFunctions.php';
 <body style=" background-color: lightgray;">
 <h1 class="mainlogin"><img class="small-logo" src="sjsu6.png" style="width: 88px; height: 88px; float:left; 
 background-color:gray; margin-left:30px;margin-bottom:10px; ">Mentor Web</h1>
+<br>
+<br>
+<div class="menu">
+    <nav class="menu">
+
+        <nav class="logout"><a class="logout1"  href="logout.php">Log out</a></nav>
+        <br>
+        <nav class="logout"><a class="logout1" href="editProfile.php">Edit Profile</a></nav>
+        <br>
+        <nav class="logout"><a class="logout1" href="viewProfiles.php">View Profile</a></nav>
+        <br>
+
+        <nav class="logout"><a class="logout1" href="calendar.php">Calendar</a></nav>
+        <br>
+        <nav class="logout"><a class="logout1" href="search.php">Search Mentor or Mentee</a></nav>
+    </nav>
+</div>
 <div class="viewprofile">
 <h2 class="editprofile1"style=" font-size: 20pt;font-style: italic;
 	 font-family: cursive;font-weight: bold; margin-left:200px;}"> View Profile</h2>
 <!-- These forms allow a user to search for another user based on their username,
 email, or interests -->
+
+
 <form class="viewprofile" method="post" action="viewProfiles.php">
 <br>
 Search by Email: <br>
@@ -103,7 +122,7 @@ function displayUserProfileByEmail($email) {
  */
 function displayUserProfilesByInterest($interest) {
 	echo '<form class="editprofile" method="POST" action="viewProfiles.php">';
-	$paid = checkPaidSubscription($_SESSION['username'])
+	$paid = checkPaidSubscription($_SESSION['username']);
 	$userArray = getUsernamesUsingInterests($interest);
 	$limit = count($userArray);
 	if (!$paid) {
