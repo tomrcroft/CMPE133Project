@@ -18,6 +18,7 @@ include 'DatabaseFunctions.php';
         <title>Mentor/Mentee Search</title>
         <script src="scriptResult.js"></script>
         <link rel="stylesheet" type="text/css" href="formatresult.css">
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
 
     <body style=" background-color: lightgray;">
@@ -39,14 +40,14 @@ include 'DatabaseFunctions.php';
                 <br>
                 <nav class="logout"><a class="logout1" href="search.php">Search</a></nav>
             </nav>
-        </div>
-        <div class="menu">
+        
             <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
                 <h1>Mentor/Mentee Search</h1>
                 <p>Job Category: <input type="text" name="job" /></p>
                 <p>Specific Interests: <input type="text" name="interests" /></p>
                 <p><input type="submit" name="submit"/></p>
-
+				<br>
+				<br>
 
                 <?php
                 /* Press Submit button */
@@ -57,7 +58,8 @@ include 'DatabaseFunctions.php';
                         exit;
                     } else {
                         $results = searchByJobDescriptionAndInterests($_POST['job'], $_POST['interests']);
-
+						$results = array_unique($results);
+						
                         $_SESSION['results'] = $results;
 
                         if (empty($results)) {
@@ -66,6 +68,7 @@ include 'DatabaseFunctions.php';
                         } else {
                             echo '<p><input type="submit" value= "Show All" name="all"/>';
                             echo ' <input type="submit"  value= "Show Mentors" name="mentors"/>';
+							echo ' <input type="submit"  value= "Show Mentees" name="mentees"/>';
                             showResults($_SESSION['results']);
                         }
                     }
@@ -75,6 +78,7 @@ include 'DatabaseFunctions.php';
                 if (isset($_POST['all'])) {
                     echo '<p><input type="submit" value= "Show All" name="all"/>';
                     echo ' <input type="submit"  value= "Show Mentors" name="mentors"/>';
+                    echo ' <input type="submit"  value= "Show Mentees" name="mentees"/>';	
                     showResults($_SESSION['results']);
                 }
 
@@ -82,8 +86,17 @@ include 'DatabaseFunctions.php';
                 if (isset($_POST['mentors'])) {
                     echo '<p><input type="submit" value= "Show All" name="all"/>';
                     echo ' <input type="submit"  value= "Show Mentors" name="mentors"/>';
+                    echo ' <input type="submit"  value= "Show Mentees" name="mentees"/>';	
                     showMentors($_SESSION['results']);
                 }
+				
+				if (isset($_POST['mentees'])) {
+                    echo '<p><input type="submit" value= "Show All" name="all"/>';
+                    echo ' <input type="submit"  value= "Show Mentors" name="mentors"/>';
+                    echo ' <input type="submit"  value= "Show Mentees" name="mentees"/>';					
+                    showMentors($_SESSION['results']);
+                }
+				
                 ?>	
 
             </form> 
@@ -111,17 +124,29 @@ include 'DatabaseFunctions.php';
              *  POST:  a table with all the mentors that were in the results
              * */
             function showMentors($results) {
-                $count = 0;
                 echo '<table width="500" class="altrowstable" id="alternatecolor"><tr><th>Name</th><th>Information</th><th>Contact</th></tr>';
                 foreach ($results as $uName) {
                     if (isMentor($uName)) {
                         informationSearch($uName);
-                        $count++;
                     }
                 }
                 echo '</table>';
             }
 
+			/**
+             *  This function show all the mentors that are in the results
+             *  PRE:   $results, an array with all the results
+             *  POST:  a table with all the mentors that were in the results
+             * */
+            function showMentees($results) {
+                echo '<table width="500" class="altrowstable" id="alternatecolor"><tr><th>Name</th><th>Information</th><th>Contact</th></tr>';
+                foreach ($results as $uName) {
+                    if (isMentee($uName)) {
+                        informationSearch($uName);
+                    }
+                }
+                echo '</table>';
+            }
             /**
              *  This function retrieved all the information from uName, and add a row in the created table
              *  PRE:   $uName  a user
