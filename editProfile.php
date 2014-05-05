@@ -54,8 +54,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 background-color:gray; margin-left:30px;margin-bottom:10px; ">Mentor Web</h1>
 <br>
 <br>
-<div class="menu">
-    <nav class="menu">
+
+    
+
+<form>
+
+<div class="editprofile">
+<h2 class="editprofile1"style=" font-size: 20pt;font-style: italic;
+	 font-family: cursive;font-weight: bold; text-align:center;}"> Edit Profile</h2>
+	 <nav class="menu">
 
         <nav class="logout"><a class="logout1"  href="logout.php">Log out</a></nav>
         <br>
@@ -68,12 +75,6 @@ background-color:gray; margin-left:30px;margin-bottom:10px; ">Mentor Web</h1>
         <br>
         <nav class="logout"><a class="logout1" href="search.php">Search</a></nav>
     </nav>
-</div>
-<form>
-
-<div class="editprofile">
-<h2 class="editprofile1"style=" font-size: 20pt;font-style: italic;
-	 font-family: cursive;font-weight: bold; margin-left:285px;}"> Edit Profile</h2>
 <form> </form>
 <form class="editprofile" method="post" action="editProfile.php">
 Old Password: <br><input class="editprofile1" type="password" name="oldpassword" ><br><br>
@@ -87,7 +88,7 @@ Re-enter Password: <br><input class="editprofile1" type="password" name="repeatn
 $paid = checkPaidSubscription($_SESSION['username']);
 if (!$paid) {
     echo '<p class="editprofile">Would you like to become a premium member<br> and remove all limits on mentors and mentees?';
-    echo '<form action="subscribe.php"><input class="editprofile" type="submit" value="Subscribe"style="margin-left:402px;" ></p></form>'; 
+    echo '<form action="subscribe.php"><input class="editprofile" type="submit" value="Subscribe"style="margin-left:610px;" ></p></form>'; 
 } else { // change to else if ($_SESSION['paid'] == true)
     $creditCardLastFourDigits = getLastFourDigitsOfCreditCardNumber($_SESSION['username']); //change to grab credit card info
     echo '<p class ="editprofile">Credit Card: ************'.$creditCardLastFourDigits.'</p>';
@@ -119,7 +120,7 @@ New email: <br><input class="editprofile1" type="email" name="email">
 	} 
 ?>
 <br>
-<input class="editprofile" type="submit" value="Delete" name="deleteInterest"/>
+<input class="editprofile"  type="submit" value="Delete" name="deleteInterest"/>
 </form>
 <p class="editprofile">Add a new interest:</p>
 <form class="editprofile" method="post" action="editProfile.php">

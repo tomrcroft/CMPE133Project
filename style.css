@@ -7,10 +7,10 @@ h1.editprofile {background:gray; text-align:center; font-size: 45pt; margin-top:
 	 input.editprofile1{width: 300px; height:35px; font-size:12pt; font-weight:; border-style:ridge;}
 	 input.editprofile2{width: 100px; height: 30px; font-size: 12pt; font-weight: bold;font-family:cursive; 
 	 border-style: double;background-color: white;}
-	 p.editprofile{margin-left:95px;}
-	 form.editprofile{margin-left:95px;}
-	 div.editprofile{font-size:13pt; font-weight:bold; border-style:outset; width:57%; margin-left:300px; 
-	 background-color: silver;}
+	 p.editprofile{margin-left:300px;}
+	 form.editprofile{margin-left:300px;}
+	 div.editprofile{font-size:13pt; font-weight:bold; border-style:outset; width:80%; margin-left:120px; 
+	 background-color: silver;margin-top:10px;}
 	 form.editprofile1{ border-bottom-style: dashed; border-color: blue; font-size: 18pt;font-style: italic;
 	 font-family: cursive;font-weight: bold;}
 h1.mainlogin {background:gray; text-align:center; font-size: 45pt; margin-top:10px; padding-top:20px;
