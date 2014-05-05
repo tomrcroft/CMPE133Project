@@ -41,12 +41,12 @@ include 'DatabaseFunctions.php';
                 <nav class="logout"><a class="logout1" href="search.php">Search</a></nav>
             </nav>
         </div>
-		<div class="menu">
+		<div class="search1">
             <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
                 <h1>Mentor/Mentee Search</h1>
-                <p>Job Category: <input type="text" name="job" /></p>
-                <p>Specific Interests: <input type="text" name="interests" /></p>
-                <p><input type="submit" name="submit"/></p>
+                <p>Job Category: &nbsp; &nbsp; <input type="text"  style="width: 400px;" name="job" /></p>
+                <p>Specific Interests: <input type="text"  style="width: 400px;" name="interests" /></p>
+                <input class="button" type="submit" name="submit"/>
 				<br>
 				<br>
 
@@ -91,6 +91,7 @@ include 'DatabaseFunctions.php';
                     showMentors($_SESSION['results']);
                 }
 				
+				/* Press Show Mentees button*/
 				if (isset($_POST['mentees'])) {
                     echo '<p><input type="submit" value= "Show All" name="all"/>';
                     echo ' <input type="submit"  value= "Show Mentors" name="mentors"/>';
