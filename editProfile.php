@@ -3,7 +3,6 @@ session_start();
 $loggedIn = isset($_SESSION['username']);
 if (!$loggedIn)
 	header('location:mainLogin.php');
-
 ?>
 <html>
 <head>
@@ -75,7 +74,8 @@ if (!$paid) {
 } else { // change to else if ($_SESSION['paid'] == true)
     $creditCardLastFourDigits = getLastFourDigitsOfCreditCardNumber($_SESSION['username']); //change to grab credit card info
     echo '<p class ="editprofile">Credit Card: ************'.$creditCardLastFourDigits.'</p>';
-    echo '<input class ="editprofile" type="button" onlick="subscribe.php" value="Change">';
+    //echo '<input class ="editprofile" type="button" onlick="subscribe.php" value="Change">';
+    echo '<form action="subscribe.php"><input class="editprofile" type="submit" value="Edit Card"style="margin-left:402px;" ></p></form>'; 
 }
 ?>
 

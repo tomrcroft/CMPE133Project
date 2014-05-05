@@ -4,6 +4,39 @@ $loggedIn = isset($_SESSION['username']);
 if (!$loggedIn)
 	header('location:mainLogin.php');
 include 'DatabaseFunctions.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	// validate and then enter credit card info to database
+	if (isset($_POST['ccsubmit'])) {
+		$ccnameerror = false;
+		$ccnumerror = false;
+		$cvverror = false;
+		$expirydateerror = false;
+
+		if (!isset($_POST['ccname'])) {
+			$ccnameerror = true;
+			echo '<p> cc name error</p>';
+		}
+		if (!isset($_POST['ccnum']) || strlen((string) $_POST['ccnum']) != 16) {
+			$ccnumerror = true;
+			echo '<p> cc num error</p>';
+		}
+		if (!isset($_POST['cvv']) || strlen((string) $_POST['cvv']) != 3) {
+			$cvverror = true;
+			echo '<p> cvv error</p>';
+		}
+		if (!isset($_POST['expirydate'])) {
+			$expirydateerror = true;
+			echo '<p> cc expir error</p>';
+		}
+		if (!$ccnameerror && !$ccnumerror && !$ccverror && !$expirydateerror) {
+			addCreditCard($_SESSION['username'], $_POST['ccnum'], $_POST['cvv'], $_POST['ccname'], $_POST['expirydate']);
+			setSubscriptionStatus($_SESSION['username'], true);
+			header('locatiton:editProfile.php');
+		}
+    }
+}
+
 ?>
 <html>
 <head>
@@ -23,59 +56,17 @@ if (!checkPaidSubscription($_SESSION['username'])) {
 	echo '<p class="subscribe">All it takes is <span style="font-size:19pt;font-weight:bold;color:#5FFB17;">$ </span><span style="font-size:16pt;font-weight:bold;">5.00</span> a month to remove all limits of a free account!<p>';
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	// validate and then enter credit card info to database
-	if (isset($_POST['ccsubmit'])) {
-		$ccnameerror = false;
-		$ccnumerror = false;
-		$cvverror = false;
-		$expirydateerror = false;
 
-		if (!isset($_POST['ccname'])) {
-			$ccnameerror = true;
-		}
-		if (!isset($_POST['ccnum']) || strlen((string) $_POST['ccnum']) != 16) {
-			$ccnumerror = true;
-		}
-		if (!isset($_POST['cvv']) || strlen((string) $_POST['cvv']) != 3) {
-			$cvverror = true;
-		}
-		if (!isset($_POST['expirydate']) || !checkExpiryDate($_POST['expirydate'])) {
-			$expirydateerror = true;
-		}
-		if (!$ccnameerror && !$ccnumerror && !$ccverror && !$expirydateerror) {
-			addCreditCard($_SESSION['username'], $_POST['ccnum'], $_POST['cvv'], $_POST['ccname'], $_POST['expirydate']);
-			setSubscriptionStatus($_SESSION['username'], true);
-		}
-    }
-}
 ?>
 <form class="subscribe" method="post" action="subscribe.php">
 Card Holder's name: <input class="textbox" type="text" name="ccname"><br><br>
 Card number: <input class="textbox" type="text" name="ccnum"><br><br>
-CCV number: <input class="textbox" type="text" name="cvv"><br><br>
+CVV number: <input class="textbox" type="text" name="cvv"><br><br>
 Expiration Date (mmyyyy): <input class="textbox" type="text" name="expirydate"><br><br>
 
 <input class="button" type="submit" name="ccsubmit" value="Submit">
 
 </form>
-
-<?php
-function checkExpiryDate($date) {
-	$month = $date / 10000;
-	$year = $date % 10000;
-    if ($month > 12 || $month < 1) {
-        return false;
-    }
-    if ($year < date('Y')) {
-        return false;
-    }
-    if ($year == date('Y') && $month < date('m')) {
-    	return false;
-    }
-    return true;
-}
-?>
 </div>
 </body>
 </html>
