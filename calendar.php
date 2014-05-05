@@ -16,7 +16,7 @@ include 'DatabaseFunctions.php';
 
 ?>
 <?php
-$con=mysqli_connect("localhost","cs133","","test1");
+$con=mysqli_connect("mydbinstance.czp48rfeukis.us-west-2.rds.amazonaws.com","tomrcroft","password","cmpe133Project");
 
 
 ?>
@@ -83,7 +83,7 @@ $con=mysqli_connect("localhost","cs133","","test1");
         ?>
         <?php
         if (isset($_GET['add'])) {
-            $_SESSION['username']='John';
+            
             $uName=$_SESSION['username'];
             $title = $_POST['txttitle'];
             $detail = $_POST['txtdetail'];
@@ -98,7 +98,6 @@ $con=mysqli_connect("localhost","cs133","","test1");
         }
          if(isset($_GET['delete']))
          {
-            $_SESSION['username']='John';
             $uName=$_SESSION['username'];
             $title = $_POST['txttitle'];
             $eventdate = $month . "/" . $day . "/" . $year;
