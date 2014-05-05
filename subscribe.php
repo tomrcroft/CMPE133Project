@@ -54,6 +54,9 @@ background-color:gray; margin-left:30px;margin-bottom:10px; ">Mentor Web</h1>
 if (!checkPaidSubscription($_SESSION['username'])) {
 	echo '<h2 class="subscribe">Become a Premium member!</h2>';
 	echo '<p class="subscribe">All it takes is <span style="font-size:19pt;font-weight:bold;color:#5FFB17;">$ </span><span style="font-size:16pt;font-weight:bold;">5.00</span> a month to remove all limits of a free account!<p>';
+} else {
+	echo '<br>';
+	echo '<br>';
 }
 
 
