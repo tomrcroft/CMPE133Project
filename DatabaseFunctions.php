@@ -373,6 +373,18 @@ function isMentor($uName)
         return TRUE;
 }
 
+function isMentee($uName)
+{
+    global $con;
+    
+    $result = mysqli_query($con,"select * from mentors WHERE menteeName='$uName'");
+    $resultArray = mysqli_fetch_array($result);
+    if($resultArray[0] == null)
+        return FALSE;
+    else 
+        return TRUE;
+}
+
 function deactivate($uName)
 {
     global $con;
