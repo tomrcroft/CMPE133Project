@@ -37,7 +37,7 @@ include 'DatabaseFunctions.php';
 
                 <nav class="logout"><a class="logout1" href="calendar.php">Calendar</a></nav>
                 <br>
-                <nav class="logout"><a class="logout1" href="search.php">Search Mentor or Mentee</a></nav>
+                <nav class="logout"><a class="logout1" href="search.php">Search</a></nav>
             </nav>
         </div>
         <div class="menu">
