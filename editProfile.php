@@ -150,7 +150,7 @@ echo '<br>';
 if (0 < count($menteesArray))
 	echo '<input class="editprofile" type="submit" value="Remove Relationship" name="removeRelationship"/>';
 ?>
-
+</form>
 
 <p class="editprofile">My Mentors:</p>
 <form class="editprofile" method="POST" action="removeMentorOrMentee.php">
@@ -164,7 +164,7 @@ echo '<br>';
 if (0 < count($mentorsArray))
 	echo '<input class="editprofile" type="submit" value="Remove Relationship" name="removeRelationship"/>';
 ?>
-
+</form>
 
 <?php
 function displaySkypeButton($skypeID) {
