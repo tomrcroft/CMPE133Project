@@ -58,10 +58,14 @@ $con = mysqli_connect("mydbinstance.czp48rfeukis.us-west-2.rds.amazonaws.com", "
     <body style=" background-color: lightgray;">
         <h1 class="mainlogin"><img class="small-logo" src="sjsu6.png" style="width: 88px; height: 88px; float:left; 
                                    background-color:gray; margin-left:30px;margin-bottom:10px; ">Mentor Web</h1>
-        <br>
-        <br>
-        <div class="menu">
-            <nav class="menu">
+       
+      
+            
+       
+        <div class="calendar">
+            <h2 class="editprofile1"style=" font-size: 20pt;font-style: italic;
+                font-family: cursive;font-weight: bold; text-align:center;}"> Calendar</h2>
+			<nav class="menu">
 
                 <nav class="logout"><a class="logout1"  href="logout.php">Log out</a></nav>
                 <br>
@@ -74,11 +78,6 @@ $con = mysqli_connect("mydbinstance.czp48rfeukis.us-west-2.rds.amazonaws.com", "
                 <br>
                 <nav class="logout"><a class="logout1" href="search.php">Search</a></nav>
             </nav>
-        </div>
-        <div class="calendar">
-            <h2 class="editprofile1"style=" font-size: 20pt;font-style: italic;
-                font-family: cursive;font-weight: bold; margin-left:200px;}"> Calendar</h2>
-
 <?php
 if (isset($_GET['day'])) {
     $day = $_GET['day'];
