@@ -103,7 +103,7 @@ function displayUserProfileByEmail($email) {
  */
 function displayUserProfilesByInterest($interest) {
 	echo '<form class="editprofile" method="POST" action="viewProfiles.php">';
-	$paid = checkPaidSubscription($_SESSION['username'])
+	$paid = checkPaidSubscription($_SESSION['username']);
 	$userArray = getUsernamesUsingInterests($interest);
 	$limit = count($userArray);
 	if (!$paid) {
