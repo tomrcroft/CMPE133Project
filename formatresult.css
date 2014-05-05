@@ -2,21 +2,26 @@ h1.search {background:gray; text-align:center; font-size: 45pt; margin-top:10px;
 	 font-weight: bold; color: blue; font-style: italic; font-family: fantasy,sans-serif;
 	 text-shadow: aqua;}
 img.small-logo{width:140px; height:140px; float:right;}
-div.menu{font-size:13pt; font-weight:bold; border-style:outset; width:500px; height:550px; margin-left:415px; 
+div.menu1{font-size:13pt; font-weight:bold; border-style:outset; width:80%; height:100%; margin-left:120px;
 	 background-color: silver;  margin-top:10px;}
 div.search1{font-size:13pt; font-weight:bold; border-style:outset; width:80%; height:400; margin-left:120px;
 	 background-color: silver;  margin-top:10px;}
-	 
 	 p.search{margin-left:30px;font-size:16pt;font-weight:bold;font-family: cursive;}
+<<<<<<< HEAD
 	 input.textbox22 {width: 230px; height: 30px; font-size: 13pt; font-weight: normal;font-family:sans-serif; 
 	 border-style: double;background-color: white; font-style: normal;margin-left:50px;}
 	  input.textbox11 {width: 230px; height: 30px; font-size: 13pt; font-weight: normal;font-family:sans-serif; 
 	 border-style: double;background-color: white; font-style: normal;margin-left:40px;}
 	 input.button22{width: 100px; height: 30px; font-size: 12pt; font-weight: bold;font-family:cursive; 
 	 border-style: double;background-color: white; font-style: italic; float: right; margin-right: 160px;}
+=======
+input.buttonS{width: 100px; height: 30px; font-size: 12pt; font-weight: bold;font-family:cursive; 
+	 border-style: double; background-color: white; font-style: italic; float: left ; margin-right: 40px;}
+input.buttonR{width: 130px; height: 30px; font-size: 12pt; font-weight: bold;font-family:cursive; 
+	 border-style: double; background-color: white; font-style: italic; float: left ; margin-right: 20px;}
+>>>>>>> FETCH_HEAD
 table.altrowstable {
-	font-family: verdana,arial,sans-serif;
-	font-size:11px;
+	font-size:15px;
 	color:#333333;
 	border-width: 1px;
 	border-color: #000000;

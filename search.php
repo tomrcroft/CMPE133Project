@@ -22,6 +22,7 @@ include 'DatabaseFunctions.php';
     </head>
 
     <body style=" background-color: lightgray;">
+<<<<<<< HEAD
         <h1 class="search"><img class="small-logo" src="sjsu6.png" style="width: 88px; height: 88px; float:left; 
                                 background-color:gray; margin-left:30px; margin-bottom:10px; ">Mentor Web</h1>
         
@@ -32,6 +33,16 @@ include 'DatabaseFunctions.php';
                 <h2 class="editprofile1"style=" font-size: 20pt;font-style: italic;
 	 font-family: cursive;font-weight: bold; text-align:center;}"> Mentor/Mentee Search</h2>
                 <nav class="menu">
+=======
+       <h1 class="editprofile"><img class="small-logo" src="sjsu6.png" style="width: 88px; height: 88px; float:left; 
+		background-color:gray; margin-left:30px;margin-bottom:10px; ">Mentor Web</h1>
+        <br>
+        <br>
+        <div class="menu1">
+		<h2 class="editprofile1" style=" font-size: 20pt;font-style: italic;
+		font-family: cursive;font-weight: bold; text-align:center;}">Mentor/Mentee Search</h2>
+            <nav class="menu">
+>>>>>>> FETCH_HEAD
 
                 <nav class="logout"><a class="logout1"  href="logout.php">Log out</a></nav>
                 <br>
@@ -43,11 +54,19 @@ include 'DatabaseFunctions.php';
                 <nav class="logout"><a class="logout1" href="calendar.php">Calendar</a></nav>
                 <br>
                 <nav class="logout"><a class="logout1" href="search.php">Search</a></nav>
+<<<<<<< HEAD
            		 </nav>
            		 
                 <p class="search">Job Category: &nbsp; &nbsp; <input class="textbox22" type="text"  style="width: 400px;" name="job" /></p>
                 <p class="search">Specific Interests: <input  class="textbox11"type="text"  style="width: 400px;" name="interests" /></p>
                 <input class="button22" type="submit" name="submit" value="Search">
+=======
+            </nav>
+            <form class="editprofile" action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
+                <p>Job Category : &nbsp; &nbsp; &nbsp; &nbsp; <input type="text"  style="width: 400px;" name="job" /></p>
+                <p>Specific Interests: &nbsp; <input type="text"  style="width: 400px;" name="interests" /></p>
+                <input class="buttonS" align="left" type="submit" name="submit"/>
+>>>>>>> FETCH_HEAD
 				<br>
 				<br>
 
@@ -68,9 +87,9 @@ include 'DatabaseFunctions.php';
                             echo "No results found";
                             exit;
                         } else {
-                            echo '<p><input type="submit" value= "Show All" name="all"/>';
-                            echo ' <input type="submit"  value= "Show Mentors" name="mentors"/>';
-							echo ' <input type="submit"  value= "Show Mentees" name="mentees"/>';
+                            echo '<p><input type="submit" class="buttonR" value= "Show All" name="all"/>';
+                            echo '<input type="submit" class="buttonR" value= "Show Mentors" name="mentors"/>';
+							echo '<input type="submit" class="buttonR" value= "Show Mentees" name="mentees"/>';
                             showResults($_SESSION['results']);
                         }
                     }
@@ -78,31 +97,31 @@ include 'DatabaseFunctions.php';
 
                 /* Press Show All button */
                 if (isset($_POST['all'])) {
-                    echo '<p><input type="submit" value= "Show All" name="all"/>';
-                    echo ' <input type="submit"  value= "Show Mentors" name="mentors"/>';
-                    echo ' <input type="submit"  value= "Show Mentees" name="mentees"/>';	
+                    echo '<p><input type="submit" class="buttonR" value= "Show All" name="all"/>';
+                    echo '<input type="submit" class="buttonR" value= "Show Mentors" name="mentors"/>';
+                    echo '<input type="submit" class="buttonR" value= "Show Mentees" name="mentees"/>';	
                     showResults($_SESSION['results']);
                 }
 
                 /* Press Show Mentors button */
                 if (isset($_POST['mentors'])) {
-                    echo '<p><input type="submit" value= "Show All" name="all"/>';
-                    echo ' <input type="submit"  value= "Show Mentors" name="mentors"/>';
-                    echo ' <input type="submit"  value= "Show Mentees" name="mentees"/>';	
+                    echo '<p><input type="submit" class="buttonR" value= "Show All" name="all"/>';
+                    echo '<input type="submit" class="buttonR"  value= "Show Mentors" name="mentors"/>';
+                    echo '<input type="submit" class="buttonR" value= "Show Mentees" name="mentees"/>';	
                     showMentors($_SESSION['results']);
                 }
 				
 				/* Press Show Mentees button*/
 				if (isset($_POST['mentees'])) {
-                    echo '<p><input type="submit" value= "Show All" name="all"/>';
-                    echo ' <input type="submit"  value= "Show Mentors" name="mentors"/>';
-                    echo ' <input type="submit"  value= "Show Mentees" name="mentees"/>';					
-                    showMentors($_SESSION['results']);
+                    echo '<p><input type="submit" class="buttonR" value= "Show All" name="all"/>';
+                    echo '<input type="submit" class="buttonR" value= "Show Mentors" name="mentors"/>';
+                    echo '<input type="submit" class="buttonR" value= "Show Mentees" name="mentees"/>';					
+                    showMentees($_SESSION['results']);
                 }
 				
                 ?>	
 
-            </form> 
+
 
 
             <?php
@@ -114,7 +133,8 @@ include 'DatabaseFunctions.php';
              *  POST:  a table with all the results
              * */
             function showResults($results) {
-                echo '<table width="500" class="altrowstable" id="alternatecolor"><tr><th>Name</th><th>Information</th><th>Contact</th></tr>';
+				echo '<br>';
+                echo '<table width="700" class="altrowstable" id="alternatecolor"><tr><th>Name</th><th>Information</th><th>Contact</th></tr>';
                 foreach ($results as $uName) {
                     informationSearch($uName);
                 }
@@ -127,7 +147,8 @@ include 'DatabaseFunctions.php';
              *  POST:  a table with all the mentors that were in the results
              * */
             function showMentors($results) {
-                echo '<table width="500" class="altrowstable" id="alternatecolor"><tr><th>Name</th><th>Information</th><th>Contact</th></tr>';
+				echo '<br>';
+                echo '<table width="700" class="altrowstable" id="alternatecolor"><tr><th>Name</th><th>Information</th><th>Contact</th></tr>';
                 foreach ($results as $uName) {
                     if (isMentor($uName)) {
                         informationSearch($uName);
@@ -142,7 +163,8 @@ include 'DatabaseFunctions.php';
              *  POST:  a table with all the mentors that were in the results
              * */
             function showMentees($results) {
-                echo '<table width="500" class="altrowstable" id="alternatecolor"><tr><th>Name</th><th>Information</th><th>Contact</th></tr>';
+				echo '<br>';
+                echo '<table width="700" class="altrowstable" id="alternatecolor"><tr><th>Name</th><th>Information</th><th>Contact</th></tr>';
                 foreach ($results as $uName) {
                     if (isMentee($uName)) {
                         informationSearch($uName);
@@ -170,7 +192,7 @@ include 'DatabaseFunctions.php';
                 echo '<b></td><td width="15%">' . $skypeID . "</td></tr>";
             }
             ?>	
-
+            </form> 
         </div>
     </body>
 </html>
