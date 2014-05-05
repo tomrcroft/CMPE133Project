@@ -15,7 +15,7 @@ include 'DatabaseFunctions.php';
 
 <html>
  <head>
-  <title>Mentor Search</title>
+  <title>Mentor/Mentee Search</title>
   <script src="scriptResult.js"></script>
   <link rel="stylesheet" type="text/css" href="formatresult.css">
  </head>
@@ -26,6 +26,7 @@ include 'DatabaseFunctions.php';
 
  <div class="menu">
 	<form action="<?=$_SERVER['PHP_SELF'];?>" method="post">
+        <h1>Mentor/Mentee Search</h1>
         <p>Job Category: <input type="text" name="job" /></p>
         <p>Specific Interests: <input type="text" name="interests" /></p>
         <p><input type="submit" name="submit"/></p>
@@ -35,15 +36,13 @@ include 'DatabaseFunctions.php';
 	/* Press Submit button */
 	if (isset($_POST['submit'])) { 
 	
-		if (empty($_POST['job']) || empty($_POST['interests'])) {
-			echo '<font color="red">One or both fields are empty</color>';
+		if (empty($_POST['job']) && empty($_POST['interests'])) {
+			echo '<font color="red">Both fields are empty</color>';
 			exit;
 		}
 		else
-		//if(register($_POST['job'] ,$_POST['interests']) == 1)
 		{
-			$results = getUsernamesUsingInterests('job', 'interests');	
-			//$results = array( "paidUser", "unpaidUser");
+			$results = searchByJobDescriptionAndInterests($_POST['job'], $_POST['interests']);	
 			
 			$_SESSION['results'] = $results;
 			
