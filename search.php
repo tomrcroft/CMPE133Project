@@ -14,7 +14,6 @@ include 'DatabaseFunctions.php';
 ?>
 
 <html>
-<<<<<<< HEAD
     <head>
         <title>Mentor/Mentee Search</title>
         <script src="scriptResult.js"></script>
@@ -51,17 +50,18 @@ include 'DatabaseFunctions.php';
                 <p class="search"><input class="button" type="submit" name="submit" value="Search"></p>
 
 
-                <?php
-                /* Press Submit button */
-                if (isset($_POST['submit'])) {
+<?php
+    /* Press Submit button */
+    if (isset($_POST['submit'])) {
 
-                    if (empty($_POST['job']) && empty($_POST['interests'])) {
-                        echo '<font color="red">Both fields are empty</color>';
-                        exit;
-                    } else {
-                        $results = searchByJobDescriptionAndInterests($_POST['job'], $_POST['interests']);
-
-                        $_SESSION['results'] = $results;
+         if (empty($_POST['job']) && empty($_POST['interests'])) {
+             echo '<font color="red">Both fields are empty</color>';
+             exit;
+         }
+		 else {
+              $results = searchByJobDescriptionAndInterests($_POST['job'], $_POST['interests']);
+			  $results = array_unique($results);
+              $_SESSION['results'] = $results;
 
                         if (empty($results)) {
                             echo "No results found";
@@ -82,7 +82,8 @@ include 'DatabaseFunctions.php';
                     echo ' <input type="submit"  value= "Show Mentees" name="mentees"/>';
                     showResults($_SESSION['results']);
                 }
-=======
+?>
+
  <head>
   <title>Mentor/Mentee Search</title>
   <script src="scriptResult.js"></script>
@@ -95,7 +96,7 @@ include 'DatabaseFunctions.php';
 
  <div class="menu">
  <h2 class="editprofile1"style=" font-size: 20pt;font-style: italic;
-	 font-family: cursive;font-weight: bold; margin-left:200px;}"> View Profile</h2>
+	 font-family: cursive;font-weight: bold; margin-left:200px;}"> Search</h2>
 	<form action="<?=$_SERVER['PHP_SELF'];?>" method="post">
         <p class="search">Job Category: <input class="textbox" type="text" name="job" ></p>
         <p class="search">Specific Interests: <input class="textbox1" type="text" name="interests" ></p>
@@ -235,96 +236,4 @@ include 'DatabaseFunctions.php';
 		
 </div>
 </body>
-</html>
->>>>>>> 878d9820280feb342734ee62add7cc94ee20c11f
-
-                /* Press Show Mentors button */
-                if (isset($_POST['mentors'])) {
-                    echo '<p><input type="submit" value= "Show All" name="all"/>';
-                    echo ' <input type="submit"  value= "Show Mentors" name="mentors"/>';
-                    echo ' <input type="submit"  value= "Show Mentees" name="mentees"/>';
-                    showMentors($_SESSION['results']);
-                }
-
-                /* Press Show Mentors button */
-                if (isset($_POST['menteess'])) {
-                    echo '<p><input type="submit" value= "Show All" name="all"/>';
-                    echo ' <input type="submit"  value= "Show Mentors" name="mentors"/>';
-                    echo ' <input type="submit"  value= "Show Mentees" name="mentees"/>';
-                    showMentees($_SESSION['results']);
-                }
-                ?>	
-
-            </form> 
-
-
-            <?php
-
-            /**
-             *  This function show all the results from the search in a table in the same page
-             *  with all the information of the users 
-             *  PRE:   $results , an array with all the results
-             *  POST:  a table with all the results
-             * */
-            function showResults($results) {
-                echo '<table width="500" class="altrowstable" id="alternatecolor"><tr><th>Name</th><th>Information</th><th>Contact</th></tr>';
-                foreach ($results as $uName) {
-                    informationSearch($uName);
-                }
-                echo '</table>';
-            }
-
-            /**
-             *  This function show all the mentors that are in the results
-             *  PRE:   $results, an array with all the results
-             *  POST:  a table with all the mentors that were in the results
-             * */
-            function showMentors($results) {
-                echo '<table width="500" class="altrowstable" id="alternatecolor"><tr><th>Name</th><th>Information</th><th>Contact</th></tr>';
-                foreach ($results as $uName) {
-                    if (isMentor($uName)) {
-                        informationSearch($uName);
-                    }
-                }
-                echo '</table>';
-            }
-
-            /** 	
-             *  This function show all the mentees that are in the results
-             *  PRE:   $results, an array with all the results
-             *  POST:  a table with all the mentees that were in the results
-             * */
-            function showMentees($results) {
-                echo '<table width="500" class="altrowstable" id="alternatecolor"><tr><th>Name</th><th>Information</th><th>Contact</th></tr>';
-                foreach ($results as $uName) {
-                    if (isMentee($uName)) {
-                        informationSearch($uName);
-                    }
-                }
-                echo '</table>';
-            }
-
-            /**
-             *  This function retrieved all the information from uName, and add a row in the created table
-             *  PRE:   $uName  a user
-             *  POST:  a row in the table with the user's information
-             * */
-            function informationSearch($uName) {
-                $email = getEmail($uName);
-                $jobDescription = getjobDescription($uName);
-                $skypeID = getSkypeID($uName);
-                $allInterests = getInterests($uName);
-
-                echo '<tr><td width="10%"><b>' . $uName . '</td><td width="65%"><b>Email: </b>' . $email . "<p><b> Job Description: </b>" . $jobDescription . "<p><b>Interests: </b>";
-
-                foreach ($allInterests as $interest) {
-                    echo ' ' . $interest . ', ';
-                }
-
-                echo '<b></td><td width="15%">' . $skypeID . "</td></tr>";
-            }
-            ?>	
-
-        </div>
-    </body>
 </html>
