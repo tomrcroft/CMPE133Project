@@ -45,6 +45,7 @@ include 'DatabaseFunctions.php';
 		else
 		{
 			$results = searchByJobDescriptionAndInterests($_POST['job'], $_POST['interests']);	
+			$results = array_unique($results);
 			
 			$_SESSION['results'] = $results;
 			
