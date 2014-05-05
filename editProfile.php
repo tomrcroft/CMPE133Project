@@ -52,8 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <h1 class="editprofile"><img class="small-logo" src="sjsu6.png" style="width: 88px; height: 88px; float:left; 
 background-color:gray; margin-left:30px;margin-bottom:10px; ">Mentor Web</h1>
-<br>
-<br>
+
 
     
 

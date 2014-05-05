@@ -67,6 +67,14 @@ div.menu{font-size:13pt; font-weight:bold; border-style:outset; width:90%; heigh
 	 p.subscribe{margin-left:30px;}
 	 form.subscribe{text-align: right; width:500px;}
 div.calendar{font-size:13pt; font-weight:bold; border-style:outset; width:850; height:600; margin-left:220px;
-	 background-color: silver;  margin-top:10px;}} 
+	 background-color: silver;  margin-top:10px;} 
 	 table.cal{margin-left:350px; margin-top:15px;}
-	
+div.eventform{font-size:13pt; font-weight:bold; border-style:outset; width:500; height:400; margin-left:360px;
+	 background-color: silver;  margin-top:10px;}
+p.event{font-size:13pt; font-weight:bold; }
+tr.e{margin-left:30px;}
+td.e{margin-left:30px;}
+table.e{margin-left:30px;font-size: 13pt;font-weight: bold;}
+textarea.e{width: 230px;height: 100px;}
+input.button3{width: 100px; height: 30px; font-size: 12pt; font-weight: bold;font-family:cursive; 
+	 border-style: double;background-color: white; font-style: italic; float: right; margin-right: 145px;margin-top: 10px;}
