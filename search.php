@@ -24,10 +24,14 @@ include 'DatabaseFunctions.php';
     <body style=" background-color: lightgray;">
         <h1 class="search"><img class="small-logo" src="sjsu6.png" style="width: 88px; height: 88px; float:left; 
                                 background-color:gray; margin-left:30px; margin-bottom:10px; ">Mentor Web</h1>
-        <br>
-        <br>
-        <div class="menu">
-            <nav class="menu">
+        
+            
+      
+		<div class="search1">
+            <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
+                <h2 class="editprofile1"style=" font-size: 20pt;font-style: italic;
+	 font-family: cursive;font-weight: bold; text-align:center;}"> Mentor/Mentee Search</h2>
+                <nav class="menu">
 
                 <nav class="logout"><a class="logout1"  href="logout.php">Log out</a></nav>
                 <br>
@@ -39,14 +43,11 @@ include 'DatabaseFunctions.php';
                 <nav class="logout"><a class="logout1" href="calendar.php">Calendar</a></nav>
                 <br>
                 <nav class="logout"><a class="logout1" href="search.php">Search</a></nav>
-            </nav>
-        </div>
-		<div class="search1">
-            <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
-                <h1>Mentor/Mentee Search</h1>
-                <p>Job Category: &nbsp; &nbsp; <input type="text"  style="width: 400px;" name="job" /></p>
-                <p>Specific Interests: <input type="text"  style="width: 400px;" name="interests" /></p>
-                <input class="button" type="submit" name="submit"/>
+           		 </nav>
+           		 
+                <p class="search">Job Category: &nbsp; &nbsp; <input class="textbox22" type="text"  style="width: 400px;" name="job" /></p>
+                <p class="search">Specific Interests: <input  class="textbox11"type="text"  style="width: 400px;" name="interests" /></p>
+                <input class="button22" type="submit" name="submit" value="Search">
 				<br>
 				<br>
 
