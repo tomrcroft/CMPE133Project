@@ -49,13 +49,14 @@ input.textbox2 {width: 300px; height: 32px; font-size: 13pt; font-weight: normal
 	 input.button1{width: 100px; height: 30px; font-size: 12pt; font-weight: bold;font-family:cursive; 
 	 border-style: double;background-color: white; font-style: italic; float: right; margin-right: 30px; margin-top:20px;}
 
-nav.logout{float: right;margin-right: 20px;border-style: double;border-color:black; font:13pt;font-style: italic;
-font-family: cursive;  font-weight: bold; width:200px; height:35px; text-align:center;margin-top:15px;}
-
+nav.logout{float: right;margin-right: 30px;border-style: double;border-color:black; font:13pt;font-style: italic;
+font-family: cursive;  font-weight: bold; width:180px; height:35px; text-align:center;margin-top:15px;}
+nav.logout1{float: right;margin-right: 30px;border-style: double;border-color:black; font:12pt;font-style: italic;
+font-family: cursive;  font-weight: bold; width:180px; height:65px; text-align:left;margin-top:15px;}
 
 a.logout1{text-decoration: blink;text-align: center;color: blue; magin-top:10px;font-size: 16pt;font-weight:bold;}
 nav.menu{float: left; font:13pt;font-style: italic;
-font-family: cursive;  font-weight: bold; width:250px; height:70%; text-align:center;}
+font-family: cursive;  font-weight: bold; width:250px; height:300; text-align:center;}
 
 div.menu{font-size:13pt; font-weight:bold; border-style:outset; width:90%; height:100%; margin-left:60px;
 	 background-color: silver;  margin-top:10px;}
@@ -65,7 +66,7 @@ div.menu{font-size:13pt; font-weight:bold; border-style:outset; width:90%; heigh
 	 background-color: silver;  margin-top:10px;}
 	 p.subscribe{margin-left:30px;}
 	 form.subscribe{text-align: right; width:500px;}
-div.calendar{font-size:13pt; font-weight:bold; border-style:outset; width:500; height:400; margin-left:360px;
+div.calendar{font-size:13pt; font-weight:bold; border-style:outset; width:850; height:600; margin-left:220px;
 	 background-color: silver;  margin-top:10px;}} 
-	 table.cal{margin-left:30px;}
+	 table.cal{margin-left:350px; margin-top:15px;}
 	 
