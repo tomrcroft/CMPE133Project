@@ -4,8 +4,7 @@
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body style=" background-color: lightgray;">
-<h1 class="editprofile"><img class="small-logo" src="sjsu6.png" style="width: 88px; height: 88px; float:left; 
-background-color:gray; margin-left:30px;margin-bottom:10px; ">Mentor Web</h1>
+
 <div class="eventform">
 <h2 class="editprofile1"style=" font-size: 20pt;font-style: italic;
 	 font-family: cursive;font-weight: bold; text-align:center;}"> Event Form</h2>
