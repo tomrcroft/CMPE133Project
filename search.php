@@ -18,12 +18,12 @@ include 'DatabaseFunctions.php';
         <title>Mentor/Mentee Search</title>
         <script src="scriptResult.js"></script>
         <link rel="stylesheet" type="text/css" href="formatresult.css">
-        <link rel="stylesheet" type="text/css" href="style.css">
+       
     </head>
 
     <body style=" background-color: lightgray;">
-<<<<<<< HEAD
-        <h1 class="search"><img class="small-logo" src="sjsu6.png" style="width: 88px; height: 88px; float:left; 
+
+    <h1 class="search"><img class="small-logo" src="sjsu6.png" style="width: 88px; height: 88px; float:left; 
                                 background-color:gray; margin-left:30px; margin-bottom:10px; ">Mentor Web</h1>
         
             
@@ -32,43 +32,27 @@ include 'DatabaseFunctions.php';
             <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
                 <h2 class="editprofile1"style=" font-size: 20pt;font-style: italic;
 	 font-family: cursive;font-weight: bold; text-align:center;}"> Mentor/Mentee Search</h2>
-                <nav class="menu">
-=======
-       <h1 class="editprofile"><img class="small-logo" src="sjsu6.png" style="width: 88px; height: 88px; float:left; 
-		background-color:gray; margin-left:30px;margin-bottom:10px; ">Mentor Web</h1>
-        <br>
-        <br>
-        <div class="menu1">
-		<h2 class="editprofile1" style=" font-size: 20pt;font-style: italic;
-		font-family: cursive;font-weight: bold; text-align:center;}">Mentor/Mentee Search</h2>
-            <nav class="menu">
->>>>>>> FETCH_HEAD
+                 <nav class="menu">
 
-                <nav class="logout"><a class="logout1"  href="logout.php">Log out</a></nav>
-                <br>
-                <nav class="logout"><a class="logout1" href="editProfile.php">Edit Profile</a></nav>
-                <br>
-                <nav class="logout"><a class="logout1" href="viewProfiles.php">View Profile</a></nav>
-                <br>
+        <nav class="logout"><a class="logout1"  href="logout.php">Log out</a></nav>
+        <br>
+        <nav class="logout"><a class="logout1" href="editProfile.php">Edit Profile</a></nav>
+        <br>
+        <nav class="logout"><a class="logout1" href="viewProfiles.php">View Profile</a></nav>
+        <br>
 
-                <nav class="logout"><a class="logout1" href="calendar.php">Calendar</a></nav>
-                <br>
-                <nav class="logout"><a class="logout1" href="search.php">Search</a></nav>
-<<<<<<< HEAD
-           		 </nav>
+        <nav class="logout"><a class="logout1" href="calendar.php">Calendar</a></nav>
+        <br>
+        <nav class="logout"><a class="logout1" href="search.php">Search</a></nav>
+    </nav>
            		 
-                <p class="search">Job Category: &nbsp; &nbsp; <input class="textbox22" type="text"  style="width: 400px;" name="job" /></p>
-                <p class="search">Specific Interests: <input  class="textbox11"type="text"  style="width: 400px;" name="interests" /></p>
-                <input class="button22" type="submit" name="submit" value="Search">
-=======
-            </nav>
+                
             <form class="editprofile" action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
-                <p>Job Category : &nbsp; &nbsp; &nbsp; &nbsp; <input type="text"  style="width: 400px;" name="job" /></p>
-                <p>Specific Interests: &nbsp; <input type="text"  style="width: 400px;" name="interests" /></p>
-                <input class="buttonS" align="left" type="submit" name="submit"/>
->>>>>>> FETCH_HEAD
-				<br>
-				<br>
+                <p class="search">Job Category :  <input class="textbox22" type="text"   name="job" ></p>
+                <p class="search">Specific Interests: <input class="textbox11" type="text"   name="interests" ></p>
+                <input class="button1" align="left" type="submit" name="submit" value="Search">
+
+				
 
                 <?php
                 /* Press Submit button */

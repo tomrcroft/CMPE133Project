@@ -2,23 +2,23 @@ h1.search {background:gray; text-align:center; font-size: 45pt; margin-top:10px;
 	 font-weight: bold; color: blue; font-style: italic; font-family: fantasy,sans-serif;
 	 text-shadow: aqua;}
 img.small-logo{width:140px; height:140px; float:right;}
-div.menu1{font-size:13pt; font-weight:bold; border-style:outset; width:80%; height:100%; margin-left:120px;
-	 background-color: silver;  margin-top:10px;}
+a.logout1{text-decoration: blink;text-align: center;color: blue; magin-top:10px;font-size: 16pt;font-weight:bold;}
 div.search1{font-size:13pt; font-weight:bold; border-style:outset; width:80%; height:400; margin-left:120px;
 	 background-color: silver;  margin-top:10px;}
 	 p.search{margin-left:30px;font-size:16pt;font-weight:bold;font-family: cursive;}
-<<<<<<< HEAD
-	 input.textbox22 {width: 230px; height: 30px; font-size: 13pt; font-weight: normal;font-family:sans-serif; 
-	 border-style: double;background-color: white; font-style: normal;margin-left:50px;}
-	  input.textbox11 {width: 230px; height: 30px; font-size: 13pt; font-weight: normal;font-family:sans-serif; 
+nav.menu{float: left; font:13pt;font-style: italic;text-decoration:none;
+font-family: cursive;  font-weight: bold; width:250px; height:300; text-align:center;}
+
+	 input.textbox22 {width: 350px; height: 30px; font-size: 13pt; font-weight: normal;font-family:sans-serif; 
+	 border-style: double;background-color: white; font-style: normal;margin-left:66px;}
+	  input.textbox11 {width: 350px; height: 30px; font-size: 13pt; font-weight: normal;font-family:sans-serif; 
 	 border-style: double;background-color: white; font-style: normal;margin-left:40px;}
-	 input.button22{width: 100px; height: 30px; font-size: 12pt; font-weight: bold;font-family:cursive; 
-	 border-style: double;background-color: white; font-style: italic; float: right; margin-right: 160px;}
-=======
-input.buttonS{width: 100px; height: 30px; font-size: 12pt; font-weight: bold;font-family:cursive; 
-	 border-style: double; background-color: white; font-style: italic; float: left ; margin-right: 40px;}
-input.buttonR{width: 130px; height: 30px; font-size: 12pt; font-weight: bold;font-family:cursive; 
-	 border-style: double; background-color: white; font-style: italic; float: left ; margin-right: 20px;}
+	nav.logout1{float: right;margin-right: 30px;border-style: double;border-color:black; font:12pt;font-style: italic;
+font-family: cursive;  font-weight: bold; width:180px; height:65px; text-align:left;margin-top:15px;}
+nav.logout{float: right;margin-right: 30px;border-style: double;border-color:black; font:13pt;font-style: italic;
+font-family: cursive;  font-weight: bold; width:180px; height:35px; text-align:center;margin-top:15px;}
+ input.button1{width: 100px; height: 30px; font-size: 12pt; font-weight: bold;font-family:cursive; 
+	 border-style: double;background-color: white; font-style: italic; float: right; margin-right: 210px; margin-top:15px;}
 >>>>>>> FETCH_HEAD
 table.altrowstable {
 	font-size:15px;
