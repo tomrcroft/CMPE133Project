@@ -38,12 +38,12 @@ else
 <br>
 <nav class="logout"><a class="logout1" href="editProfile.php">Edit Profile</a></nav>
 <br>
-<nav class="logout"><a class="logout1" href="search.php">Search</a></nav>
+<nav class="logout"><a class="logout1" href="viewProfiles.php">View Profile</a></nav>
 <br>
 
-<nav class="logout"><a class="logout1" href="schedule.php">Schedule</a></nav>
+<nav class="logout"><a class="logout1" href="calendar.php">Calendar</a></nav>
 <br>
-<nav class="logout"><a class="logout1" href="videoChat.php">Video Chat</a></nav>
+<nav class="logout"><a class="logout1" href="search.php"></a>Search Mentor or Mentee</nav>
 </nav>
 </div>
 
