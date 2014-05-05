@@ -53,7 +53,10 @@ $con = mysqli_connect("mydbinstance.czp48rfeukis.us-west-2.rds.amazonaws.com", "
                 background-color: #FF8080;
             }
         </style>
+        <title>Calendar</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
+<<<<<<< HEAD
     <body>
         <div class="menu">
             <nav class="menu">
@@ -72,6 +75,14 @@ $con = mysqli_connect("mydbinstance.czp48rfeukis.us-west-2.rds.amazonaws.com", "
         </div>
         <br>
         <br>
+=======
+    <body style=" background-color: lightgray;">
+    <h1 class="mainlogin"><img class="small-logo" src="sjsu6.png" style="width: 88px; height: 88px; float:left; 
+background-color:gray; margin-left:30px;margin-bottom:10px; ">Mentor Web</h1>
+    <div class="calendar">
+    <h2 class="editprofile1"style=" font-size: 20pt;font-style: italic;
+	 font-family: cursive;font-weight: bold; margin-left:200px;}"> Calendar</h2>
+>>>>>>> 878d9820280feb342734ee62add7cc94ee20c11f
         <?php
         if (isset($_GET['day'])) {
             $day = $_GET['day'];
@@ -122,7 +133,7 @@ $con = mysqli_connect("mydbinstance.czp48rfeukis.us-west-2.rds.amazonaws.com", "
         }
         ?>
 
-        <table border='0'>
+        <table  border='0'>
             <tr>
                 <td><input style='width:50px;' type='button' value='<'name='previousbutton' onclick ="goLastMonth(<?php echo $month . "," . $year ?>)"></td>
                 <td colspan='5'><?php echo $monthName . ", " . $year; ?></td>
@@ -199,6 +210,10 @@ $con = mysqli_connect("mydbinstance.czp48rfeukis.us-west-2.rds.amazonaws.com", "
             }
         }
         ?>
+<<<<<<< HEAD
 
+=======
+        </div>
+>>>>>>> 878d9820280feb342734ee62add7cc94ee20c11f
     </body>
 </html> 
