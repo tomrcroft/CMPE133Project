@@ -54,6 +54,7 @@ include 'DatabaseFunctions.php';
 			else {
 				echo '<p><input type="submit" value= "Show All" name="all"/>';
 				echo ' <input type="submit"  value= "Show Mentors" name="mentors"/>';
+				echo ' <input type="submit"  value= "Show Mentees" name="mentees"/>';
 				showResults($_SESSION['results']);
 			}
 		 }
@@ -63,15 +64,25 @@ include 'DatabaseFunctions.php';
 	if(isset($_POST['all'])){
 		echo '<p><input type="submit" value= "Show All" name="all"/>';
 		echo ' <input type="submit"  value= "Show Mentors" name="mentors"/>';
+		echo ' <input type="submit"  value= "Show Mentees" name="mentees"/>';
 		showResults($_SESSION['results']);
 	}
 	
 	/* Press Show Mentors button */
 	if(isset($_POST['mentors'])){
 		echo '<p><input type="submit" value= "Show All" name="all"/>';
-		echo ' <input type="submit"  value= "Show Mentors" name="mentors"/>';		
+		echo ' <input type="submit"  value= "Show Mentors" name="mentors"/>';
+		echo ' <input type="submit"  value= "Show Mentees" name="mentees"/>';		
 		showMentors($_SESSION['results']);
 	}
+	
+	/* Press Show Mentors button */
+	if(isset($_POST['menteess'])){
+		echo '<p><input type="submit" value= "Show All" name="all"/>';
+		echo ' <input type="submit"  value= "Show Mentors" name="mentors"/>';
+		echo ' <input type="submit"  value= "Show Mentees" name="mentees"/>';		
+		showMentees($_SESSION['results']);
+	}	
 ?>	
  
  </form> 
@@ -101,13 +112,28 @@ include 'DatabaseFunctions.php';
 	**/
 	function showMentors($results)
 	{
-		$count = 0;
 		echo '<table width="500" class="altrowstable" id="alternatecolor"><tr><th>Name</th><th>Information</th><th>Contact</th></tr>';
 		foreach ($results as $uName) 
 		{ 
 			if( isMentor($uName) ) {
 				informationSearch($uName);
-				$count++;
+			}
+		}
+		echo '</table>';
+	}
+	
+	/**	
+	*  This function show all the mentees that are in the results
+	*  PRE:   $results, an array with all the results
+	*  POST:  a table with all the mentees that were in the results
+	**/
+	function showMentees($results)
+	{
+		echo '<table width="500" class="altrowstable" id="alternatecolor"><tr><th>Name</th><th>Information</th><th>Contact</th></tr>';
+		foreach ($results as $uName) 
+		{ 
+			if( isMentee($uName) ) {
+				informationSearch($uName);
 			}
 		}
 		echo '</table>';
