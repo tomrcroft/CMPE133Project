@@ -48,8 +48,8 @@ Search by Email: <br> <input  class="textbox2" type="text" name="email">
 </p>
 </form>
 <br>
-<form class="viewprofile" method="post" action="viewProfiles.php">
 
+<form class="viewprofile" method="post" action="viewProfiles.php">
 <p class="viewprofile">
 Search by User Name: <br>
 <input class="textbox2" type="text" name="username">
@@ -57,13 +57,13 @@ Search by User Name: <br>
 </p>
 </form>
 <br>
+<!--
 <form class="viewprofile" method="post" action="viewProfiles.php">
-
 <p class="viewprofile">
 Search by an Interest:<br>
  <input class="textbox2" type="text" name="interest">
 <input class="button1" type="submit" value="Submit" name="interestsearchsubmit"></p>
-
+-->
 
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -73,9 +73,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     else if (isset($_POST['usernamesearchsubmit'])){
     	displayUserProfileByUsername($_POST['username']);
     }
-    else if (isset($_POST['interestsearchsubmit'])){
-    	displayUserProfilesByInterest($_POST['interest']);
-    }
+    //else if (isset($_POST['interestsearchsubmit'])){
+    //	displayUserProfilesByInterest($_POST['interest']);
+    //}
     else if (isset($_POST['user'])){
     	displayUserProfile($_POST['user']);
     }
@@ -123,6 +123,7 @@ function displayUserProfileByEmail($email) {
  *
  * @return void
  */
+ /*
 function displayUserProfilesByInterest($interest) {
 	echo '<form class="editprofile" method="POST" action="viewProfiles.php">';
 	$paid = checkPaidSubscription($_SESSION['username']);
@@ -148,9 +149,9 @@ function displayUserProfilesByInterest($interest) {
 			echo '<br> Username:<button class="button1" type="button" onclick=displayUserProfile('.$user.')>'.$user.'</button>';
 	}
 	else 
-		echo 'No users found with an interest in '.$interest.', please try another interest';*/
+		echo 'No users found with an interest in '.$interest.', please try another interest';
 }
-
+*/
 
 
 /*
