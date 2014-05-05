@@ -40,14 +40,14 @@ div.register{font-size:13pt; font-weight:bold; border-style:outset; width:440px;
 	 input.textbox1 {width: 250px; height: 32px; font-size: 13pt; font-weight: normal;font-family:sans-serif; 
 	 border-style: double;background-color: white; font-style: normal;}
 	 table.register{border-color: white;border-style: ; height:400px; width:400px; margin-top:20px;margin-left:25px; font-size: 13pt; }
-div.viewprofile{font-size:13pt; font-weight:bold; border-style:outset; width:500px; height:550px; margin-left:415px; 
+div.viewprofile{font-size:13pt; font-weight:bold; border-style:outset; width:80%; height:650px; margin-left:120px; 
 	 background-color: silver;  margin-top:10px;}
 form.viewporfile{margin-left: 20px;border-style: solid;border-color: silver;}
-p.viewprofile{height:70px; border-color: lightgray;border-style:dotted;margin-left:10px; margin-right:10px;}
-input.textbox2 {width: 300px; height: 32px; font-size: 13pt; font-weight: normal;font-family:sans-serif; 
+p.viewprofile{height:100px; border-color: lightgray;border-style:dotted;margin-left:260px; margin-right:40px;}
+input.textbox2 {width: 350px; height: 32px; font-size: 13pt; font-weight: normal;font-family:sans-serif; 
 	 border-style: double;background-color: white; font-style: normal;margin-left:40px; margin-top:20px;}
 	 input.button1{width: 100px; height: 30px; font-size: 12pt; font-weight: bold;font-family:cursive; 
-	 border-style: double;background-color: white; font-style: italic; float: right; margin-right: 30px; margin-top:20px;}
+	 border-style: double;background-color: white; font-style: italic; float: right; margin-right: 150px; margin-top:20px;}
 
 nav.logout{float: right;margin-right: 30px;border-style: double;border-color:black; font:13pt;font-style: italic;
 font-family: cursive;  font-weight: bold; width:180px; height:35px; text-align:center;margin-top:15px;}

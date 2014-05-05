@@ -15,10 +15,14 @@ include 'DatabaseFunctions.php';
 <body style=" background-color: lightgray;">
 <h1 class="mainlogin"><img class="small-logo" src="sjsu6.png" style="width: 88px; height: 88px; float:left; 
 background-color:gray; margin-left:30px;margin-bottom:10px; ">Mentor Web</h1>
-<br>
-<br>
-<div class="menu">
-    <nav class="menu">
+
+
+    
+
+<div class="viewprofile">
+<h2 class="editprofile1"style=" font-size: 20pt;font-style: italic;
+	 font-family: cursive;font-weight: bold; text-align:center;}"> View Profile</h2>
+	 <nav class="menu">
 
         <nav class="logout"><a class="logout1"  href="logout.php">Log out</a></nav>
         <br>
@@ -31,33 +35,32 @@ background-color:gray; margin-left:30px;margin-bottom:10px; ">Mentor Web</h1>
         <br>
         <nav class="logout"><a class="logout1" href="search.php">Search</a></nav>
     </nav>
-</div>
-<div class="viewprofile">
-<h2 class="editprofile1"style=" font-size: 20pt;font-style: italic;
-	 font-family: cursive;font-weight: bold; margin-left:200px;}"> View Profile</h2>
 <!-- These forms allow a user to search for another user based on their username,
 email, or interests -->
 
 
 <form class="viewprofile" method="post" action="viewProfiles.php">
-<br>
-Search by Email: <br>
-<p class="viewprofile"> <input  class="textbox2" type="text" name="email">
+
+
+<p class="viewprofile">
+Search by Email: <br> <input  class="textbox2" type="text" name="email">
 <input class="button1" type="submit" value="Submit" name="emailsearchsubmit">
 </p>
 </form>
 <br>
 <form class="viewprofile" method="post" action="viewProfiles.php">
-Search by User Name: <br>
+
 <p class="viewprofile">
+Search by User Name: <br>
 <input class="textbox2" type="text" name="username">
 <input class="button1" type="submit" value="Submit" name="usernamesearchsubmit">
 </p>
 </form>
 <br>
 <form class="viewprofile" method="post" action="viewProfiles.php">
-Search by an Interest:<br>
+
 <p class="viewprofile">
+Search by an Interest:<br>
  <input class="textbox2" type="text" name="interest">
 <input class="button1" type="submit" value="Submit" name="interestsearchsubmit"></p>
 
