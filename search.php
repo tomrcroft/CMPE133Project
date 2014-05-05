@@ -71,9 +71,9 @@ include 'DatabaseFunctions.php';
                             echo "No results found";
                             exit;
                         } else {
-                            echo '<p><input type="submit" class="buttonR" value= "Show All" name="all"/>';
-                            echo '<input type="submit" class="buttonR" value= "Show Mentors" name="mentors"/>';
-							echo '<input type="submit" class="buttonR" value= "Show Mentees" name="mentees"/>';
+                            echo '<p><input class="button2"  type="submit" class="buttonR" value= "Show All" name="all"/>';
+                            echo '<input  class="button2"type="submit" class="buttonR" value= "Show Mentors" name="mentors"/>';
+							echo '<input class="button2" type="submit" class="buttonR" value= "Show Mentees" name="mentees"/>';
                             showResults($_SESSION['results']);
                         }
                     }
@@ -81,25 +81,25 @@ include 'DatabaseFunctions.php';
 
                 /* Press Show All button */
                 if (isset($_POST['all'])) {
-                    echo '<p><input type="submit" class="buttonR" value= "Show All" name="all"/>';
-                    echo '<input type="submit" class="buttonR" value= "Show Mentors" name="mentors"/>';
-                    echo '<input type="submit" class="buttonR" value= "Show Mentees" name="mentees"/>';	
+                    echo '<p><input class="button2" type="submit" class="buttonR" value= "Show All" name="all"/>';
+                    echo '<input class="button2" type="submit" class="buttonR" value= "Show Mentors" name="mentors"/>';
+                    echo '<input  class="button2"type="submit" class="buttonR" value= "Show Mentees" name="mentees"/>';	
                     showResults($_SESSION['results']);
                 }
 
                 /* Press Show Mentors button */
                 if (isset($_POST['mentors'])) {
-                    echo '<p><input type="submit" class="buttonR" value= "Show All" name="all"/>';
-                    echo '<input type="submit" class="buttonR"  value= "Show Mentors" name="mentors"/>';
-                    echo '<input type="submit" class="buttonR" value= "Show Mentees" name="mentees"/>';	
+                    echo '<p><input class="button2" type="submit" class="buttonR" value= "Show All" name="all"/>';
+                    echo '<input class="button2" type="submit" class="buttonR"  value= "Show Mentors" name="mentors"/>';
+                    echo '<input class="button2" type="submit" class="buttonR" value= "Show Mentees" name="mentees"/>';	
                     showMentors($_SESSION['results']);
                 }
 				
 				/* Press Show Mentees button*/
 				if (isset($_POST['mentees'])) {
-                    echo '<p><input type="submit" class="buttonR" value= "Show All" name="all"/>';
-                    echo '<input type="submit" class="buttonR" value= "Show Mentors" name="mentors"/>';
-                    echo '<input type="submit" class="buttonR" value= "Show Mentees" name="mentees"/>';					
+                    echo '<p><input class="button2" type="submit" class="buttonR" value= "Show All" name="all"/>';
+                    echo '<input class="button2" type="submit" class="buttonR" value= "Show Mentors" name="mentors"/>';
+                    echo '<input class="button2"  type="submit" class="buttonR" value= "Show Mentees" name="mentees"/>';					
                     showMentees($_SESSION['results']);
                 }
 				

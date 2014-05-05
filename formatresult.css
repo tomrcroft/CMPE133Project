@@ -3,7 +3,7 @@ h1.search {background:gray; text-align:center; font-size: 45pt; margin-top:10px;
 	 text-shadow: aqua;}
 img.small-logo{width:140px; height:140px; float:right;}
 a.logout1{text-decoration: blink;text-align: center;color: blue; magin-top:10px;font-size: 16pt;font-weight:bold;}
-div.search1{font-size:13pt; font-weight:bold; border-style:outset; width:80%; height:400; margin-left:120px;
+div.search1{font-size:13pt; font-weight:bold; border-style:outset; width:80%; height:100%; margin-left:120px;
 	 background-color: silver;  margin-top:10px;}
 	 p.search{margin-left:30px;font-size:16pt;font-weight:bold;font-family: cursive;}
 nav.menu{float: left; font:13pt;font-style: italic;text-decoration:none;
@@ -19,6 +19,12 @@ nav.logout{float: right;margin-right: 30px;border-style: double;border-color:bla
 font-family: cursive;  font-weight: bold; width:180px; height:35px; text-align:center;margin-top:15px;}
  input.button1{width: 100px; height: 30px; font-size: 12pt; font-weight: bold;font-family:cursive; 
 	 border-style: double;background-color: white; font-style: italic; float: right; margin-right: 210px; margin-top:15px;}
+	 input.button2{width: 100px; height: 30px; font-size: 11pt; font-weight: bold;font-family:cursive; 
+	 border-style: double;background-color: white; font-style: italic;  margin-top:70px; margin-left:40px;}
+	 input.button3{width: 120px; height: 30px; font-size: 11pt; font-weight: bold;font-family:cursive; 
+	 border-style: double;background-color: white; font-style: italic;   margin-top:70px; margin-left:50px;}
+	 input.button4{width: 100px; height: 30px; font-size: 11pt; font-weight: bold;font-family:cursive; 
+	 border-style: double;background-color: white; font-style: italic;  margin-top:70px;margin-left: 40px; }
 >>>>>>> FETCH_HEAD
 table.altrowstable {
 	font-size:15px;
