@@ -43,7 +43,7 @@ else
 
 <nav class="logout"><a class="logout1" href="calendar.php">Calendar</a></nav>
 <br>
-<nav class="logout"><a class="logout1" href="search.php"></a>Search Mentor or Mentee</nav>
+<nav class="logout"><a class="logout1" href="search.php">Search Mentor or Mentee</nav>
 </nav>
 </div>
 
