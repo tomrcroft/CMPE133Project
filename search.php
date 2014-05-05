@@ -68,6 +68,14 @@ include 'DatabaseFunctions.php';
 		showResults($_SESSION['results']);
 	}
 	
+		/* Press Show Mentees button */
+	if(isset($_POST['mentees'])){
+		echo '<p><input type="submit" value= "Show All" name="all"/>';
+		echo ' <input type="submit"  value= "Show Mentors" name="mentors"/>';
+		echo ' <input type="submit"  value= "Show Mentees" name="mentees"/>';		
+		showMentees($_SESSION['results']);
+	}
+	
 	/* Press Show Mentors button */
 	if(isset($_POST['mentors'])){
 		echo '<p><input type="submit" value= "Show All" name="all"/>';
@@ -75,14 +83,7 @@ include 'DatabaseFunctions.php';
 		echo ' <input type="submit"  value= "Show Mentees" name="mentees"/>';		
 		showMentors($_SESSION['results']);
 	}
-	
-	/* Press Show Mentors button */
-	if(isset($_POST['menteess'])){
-		echo '<p><input type="submit" value= "Show All" name="all"/>';
-		echo ' <input type="submit"  value= "Show Mentors" name="mentors"/>';
-		echo ' <input type="submit"  value= "Show Mentees" name="mentees"/>';		
-		showMentees($_SESSION['results']);
-	}	
+		
 ?>	
  
  </form> 
