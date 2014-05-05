@@ -25,11 +25,12 @@ include 'DatabaseFunctions.php';
  background-color:gray; margin-left:30px; margin-bottom:10px; ">Mentor Web</h1>
 
  <div class="menu">
+ <h2 class="editprofile1"style=" font-size: 20pt;font-style: italic;
+	 font-family: cursive;font-weight: bold; margin-left:200px;}"> View Profile</h2>
 	<form action="<?=$_SERVER['PHP_SELF'];?>" method="post">
-        <h1>Mentor/Mentee Search</h1>
-        <p>Job Category: <input type="text" name="job" /></p>
-        <p>Specific Interests: <input type="text" name="interests" /></p>
-        <p><input type="submit" name="submit" value="Search"/></p>
+        <p class="search">Job Category: <input class="textbox" type="text" name="job" ></p>
+        <p class="search">Specific Interests: <input class="textbox1" type="text" name="interests" ></p>
+        <p class="search"><input class="button" type="submit" name="submit" value="Search"></p>
 	
 	
 <?php
