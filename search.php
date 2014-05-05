@@ -29,7 +29,7 @@ include 'DatabaseFunctions.php';
         <h1>Mentor/Mentee Search</h1>
         <p>Job Category: <input type="text" name="job" /></p>
         <p>Specific Interests: <input type="text" name="interests" /></p>
-        <p><input type="submit" name="submit"/></p>
+        <p><input type="submit" name="submit" value="Search"/></p>
 	
 	
 <?php
