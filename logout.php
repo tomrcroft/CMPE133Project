@@ -9,4 +9,5 @@ session_start();
 include "DatabaseFunctions.php";
 session_destroy();
 echo "You have successfully logged out.";
+header("location:mainLogin.php");
 ?>
